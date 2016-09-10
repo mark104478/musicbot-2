@@ -29,7 +29,7 @@ bot.on("message", function(message) {
 	}
 	
 				if(message.content.startsWith(prefix + 'restart')) { //This command is currenlty not available at this time.
-	bot.sendMessage(message, 'Restart issued by ' + message.author.name + '\nRestarting sucessfully.)
+	bot.sendMessage(message, 'Restart issued by ' + message.author.name + '\nRestarting sucessfully.')
 	}
 	
 });
