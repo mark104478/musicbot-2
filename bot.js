@@ -42,4 +42,4 @@ bot.on("message", function(message) {
 
 bot.loginWithToken(config.token);
 // This version of discord.js is V8, you may install it using npm install discord.js#indev-old
-// You may change the prefix var, if you would like to. And the var bot, but remember if you change the var bot, you must change all the bot functions in ur code.
+// Don't mess with this file it will ruin your bot, to change stuff edit config.json
