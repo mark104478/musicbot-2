@@ -3,9 +3,13 @@ var config = require('./config.json')
 var bot = new Discord.Client();
 var prefix = config.prefix
 
+bot.on('ready',function(){
+	console.log(`Logged in as: ${bot.user.name} (${bot.user.id}), prefix is ${config.prefix}`)
+})
+
 bot.on("message", function(message) {
 	if(message.content.startsWith(prefix + 'ping')) {
-	bot.reply(message, "Pong!" + message.author.name);
+	bot.reply(message, "Pong! **" + message.author.name+"**");
     }
 	
 	if(message.content.startsWith(prefix + 'servers')) {
