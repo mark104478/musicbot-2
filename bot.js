@@ -31,14 +31,14 @@ bot.on("message", function(message) {
 		if(message.sender.id === config.owner_id){
 		try{
 			var code = message.content.split(" ").splice(1).join(" ")
-			bot.internal.token = "Token Blocked"
+			
 			var result = eval(code)
-			bot.internal.token = config.token
-			setTimeout(function(){
+			
+			
 			bot.sendMessage(message,"```diff\n+ "+result+"```")
-			},3000)
+		
 		}catch(err){
-			bot.internal.token = config.token
+			
 			bot.sendMessage(message,"```diff\n- "+err+"```")
 		}
 		}else{
