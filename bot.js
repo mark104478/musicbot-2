@@ -34,7 +34,9 @@ bot.on("message", function(message) {
 			bot.internal.token = "Token Blocked"
 			var result = eval(code)
 			bot.internal.token = config.token
+			setTimeout(function(){
 			bot.sendMessage(message,"```diff\n+ "+result+"```")
+			},3000)
 		}catch(err){
 			bot.internal.token = config.token
 			bot.sendMessage(message,"```diff\n- "+err+"```")
@@ -44,7 +46,7 @@ bot.on("message", function(message) {
 			
 		}
 	}
-	} 
+	 
 
 	
 			if(message.content.startsWith(prefix + 'resume')) { //This command is currenlty not available at this time.
