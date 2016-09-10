@@ -8,6 +8,7 @@ bot.on('ready',function(){
 })
 
 bot.on("message", function(message) {
+	if(message.sender.bot) return;
 	if(message.content.startsWith(prefix + 'ping')) {
 	bot.reply(message, "Pong! **" + message.author.name+"**");
     }
