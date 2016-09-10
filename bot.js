@@ -1,7 +1,7 @@
 var Discord = require("discord.js");
-
+var config = require('./config.json')
 var bot = new Discord.Client();
-var prefix = "prefix-here"
+var prefix = config.prefix
 
 bot.on("message", function(message) {
 	if(message.content.startsWith(prefix + 'ping')) {
@@ -31,9 +31,11 @@ bot.on("message", function(message) {
 				if(message.content.startsWith(prefix + 'restart')) { //This command is currenlty not available at this time.
 	bot.sendMessage(message, 'Restart issued by ' + message.author.name + '\nRestarting sucessfully.')
 	}
-	
+	if(message.content.startsWith(prefox + 'invite')){
+		bot.sendMessage(message, "My Oauth URL: "+`http://discordapp.com/oauth2/authorize?client_id=${config.client_id}&scope=bot`)
+	}
 });
 
-bot.loginWithToken("token");
+bot.loginWithToken(config.token);
 // This version of discord.js is V8, you may install it using npm install discord.js#indev-old
 // You may change the prefix var, if you would like to. And the var bot, but remember if you change the var bot, you must change all the bot functions in ur code.
