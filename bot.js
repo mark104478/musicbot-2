@@ -9,7 +9,7 @@ bot.on("message", function(message) {
     }
 	
 	if(message.content.startsWith(prefix + 'servers')) {
-	bot.sendMessage(message, "I'm currently on " +bot.servers.length + ' servers)
+	bot.sendMessage(message, "I'm currently on " +bot.servers.length + ' servers')
 	}
 	
 	if(message.content.startsWith(prefix + 'play)) { //This command is currenlty not available at this time.
