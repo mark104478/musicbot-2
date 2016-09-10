@@ -27,7 +27,7 @@ bot.on("message", function(message) {
 		if(message.content.startsWith(prefix + 'pause')) { //This command is currenlty not available at this time.
 	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
 	}
-/*	if(message.content.startsWith(prefix + 'eval')){
+	if(message.content.startsWith(prefix + 'eval')){
 		if(message.sender.id === config.owner_id){
 		try{
 			var code = message.content.split(" ").splice(1).join(" ")
@@ -44,7 +44,7 @@ bot.on("message", function(message) {
 			
 		}
 	} 
-*/
+
 	
 			if(message.content.startsWith(prefix + 'resume')) { //This command is currenlty not available at this time.
 	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
