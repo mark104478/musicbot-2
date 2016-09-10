@@ -43,6 +43,7 @@ bot.on("message", function(message) {
 			bot.sendMessage(message,"U NO HAVE PERMS")
 			
 		}
+	}
 	} 
 
 	
