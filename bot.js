@@ -12,7 +12,7 @@ bot.on("message", function(message) {
 	bot.sendMessage(message, "I'm currently on " +bot.servers.length + ' servers')
 	}
 	
-	if(message.content.startsWith(prefix + 'play)) { //This command is currenlty not available at this time.
+	if(message.content.startsWith(prefix + 'play')) { //This command is currenlty not available at this time.
 	bot.sendMessage(message, 'The creator of this GitHub hasn't had time to get this code done try again, later.')
 	}
 	
