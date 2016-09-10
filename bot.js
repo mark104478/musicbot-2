@@ -25,7 +25,8 @@ bot.on("message", function(message) {
 	${prefix}eval - Owner only, tests code
 	${prefix}resume - resumes paused music
 	${prefix}restart - restarts bot
-	${prefix}invite - Creates OAuth URL for bot${rb}`)
+	${prefix}invite - Creates OAuth URL for bot
+	${prefix}git - sends link to github repo${rb}`)
 	}
 	if(message.content.startsWith(prefix + 'servers')) {
 	bot.sendMessage(message, "I'm currently on " +bot.servers.length + ' servers')
@@ -73,6 +74,9 @@ bot.on("message", function(message) {
 	}
 	if(message.content.startsWith(prefix + 'invite')){
 		bot.sendMessage(message, "My Oauth URL: "+`http://discordapp.com/oauth2/authorize?client_id=${config.client_id}&scope=bot`)
+	}
+	if(message.content.startsWith(prefix + 'git')){
+		bot.sendMessage(message, "Github URL: https://github.com/developerCodex/musicbot")
 	}
 });
 
