@@ -2,6 +2,7 @@ var Discord = require("discord.js");
 var config = require('./config.json')
 var bot = new Discord.Client();
 var prefix = config.prefix
+var rb = "```"
 
 bot.on('ready',function(){
 	console.log(`Logged in as: ${bot.user.name} (${bot.user.id}), prefix is ${config.prefix}`)
@@ -14,17 +15,18 @@ bot.on("message", function(message) {
     }
 	if(message.content.startsWith(prefix + 'help')){
 		bot.sendMessage(message,"Check your DM's **"+message.sender.name+"**")
-		bot.sendMessage(message.sender.id,`
-		${prefix}help - Shows this message
-		${prefix}ping - Ping/Pong
-		${prefix}servers shows how many servers bot is in
-		${prefix}play - plays music
-		${prefix}skip - Skips playing song
-		${prefix}pause - pauses music
-		${prefix}eval - Owner only, tests code
-		${prefix}resume - resumes paused music
-		${prefix}restart - restarts bot
-		${prefix}invite - Creates OAuth URL for bot`)
+		bot.sendMessage(message.sender.id,`${rb}ruby
+	
+	${prefix}help - Shows this message
+	${prefix}ping - Ping/Pong
+	${prefix}servers shows how many servers bot is in
+	${prefix}play - plays music
+	${prefix}skip - Skips playing song
+	${prefix}pause - pauses music
+	${prefix}eval - Owner only, tests code
+	${prefix}resume - resumes paused music
+	${prefix}restart - restarts bot
+	${prefix}invite - Creates OAuth URL for bot${rb}`)
 	}
 	if(message.content.startsWith(prefix + 'servers')) {
 	bot.sendMessage(message, "I'm currently on " +bot.servers.length + ' servers')
