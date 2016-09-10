@@ -31,7 +31,7 @@ bot.on("message", function(message) {
 				if(message.content.startsWith(prefix + 'restart')) { //This command is currenlty not available at this time.
 	bot.sendMessage(message, 'Restart issued by ' + message.author.name + '\nRestarting sucessfully.')
 	}
-	if(message.content.startsWith(prefox + 'invite')){
+	if(message.content.startsWith(prefix + 'invite')){
 		bot.sendMessage(message, "My Oauth URL: "+`http://discordapp.com/oauth2/authorize?client_id=${config.client_id}&scope=bot`)
 	}
 });
