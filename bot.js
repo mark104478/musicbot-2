@@ -8,7 +8,7 @@ bot.on("message", function(message) {
 	bot.reply(message, "Pong!" + message.author.name);
     }
 	
-	if(message.content.startsWith(prefix + 'servers)) {
+	if(message.content.startsWith(prefix + 'servers')) {
 	bot.sendMessage(message, "I'm currently on " +bot.servers.length + ' servers)
 	}
 	
