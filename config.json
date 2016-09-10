@@ -1,6 +1,6 @@
 {
-"token":"[insert token here]",
-"client_id":"[add your bots client id here]",
-"prefix":"[add prefix for bot i.e. '-' would mean '-help' is a command",
-"owner_id":"[your id, can be found using discord dev tools, lots of bots have em as well]"
+"token":"[TOKEN HERE]",
+"client_id":"[BOT CLIENT ID]",
+"prefix":"[BOT PREFIX",
+"owner_id":"[OWNER ID (YOUR ID)]"
 }
