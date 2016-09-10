@@ -13,19 +13,19 @@ bot.on("message", function(message) {
 	}
 	
 	if(message.content.startsWith(prefix + 'play')) { //This command is currenlty not available at this time.
-	bot.sendMessage(message, 'The creator of this GitHub hasn't had time to get this code done try again, later.')
+	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
 	}
 	
 	if(message.content.startsWith(prefix + 'skip')) { //This command is currenlty not available at this time.
-	bot.sendMessage(message, 'The creator of this GitHub hasn't had time to get this code done try again, later.')
+	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
 	}
 	
 		if(message.content.startsWith(prefix + 'pause')) { //This command is currenlty not available at this time.
-	bot.sendMessage(message, 'The creator of this GitHub hasn't had time to get this code done try again, later.')
+	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
 	}
 	
 			if(message.content.startsWith(prefix + 'resume')) { //This command is currenlty not available at this time.
-	bot.sendMessage(message, 'The creator of this GitHub hasn't had time to get this code done try again, later.')
+	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
 	}
 	
 				if(message.content.startsWith(prefix + 'restart')) { //This command is currenlty not available at this time.
