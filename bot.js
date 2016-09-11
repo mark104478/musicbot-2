@@ -29,7 +29,7 @@ bot.on("message", function(message) {
 	${prefix}git - Sends link to github repo${rb}`)
 	}
 	if(message.content.startsWith(prefix + 'servers')) {
-	bot.sendMessage(message, "I'm currently on **" +bot.servers.length + "** servers")
+	bot.sendMessage(message, "I'm currently on **" +bot.servers.length + "** server(s)")
 	}
 	
 	if(message.content.startsWith(prefix + 'play')) {
