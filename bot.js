@@ -21,12 +21,12 @@ bot.on("message", function(message) {
 	${prefix}servers Shows amount of servers.
 	${prefix}play - Plays the song you requested.
 	${prefix}skip - Skips the playing song.
-	${prefix}pause - Pauses the current song.
+	${prefix}pause - Pause the current song.
 	${prefix}eval - Owner only.
-	${prefix}resume - Resumes paused song
+	${prefix}resume - Resumes paused song.
 	${prefix}restart - Restarts the bot (Owner only).
 	${prefix}invite - Creates OAuth URL for bot
-	${prefix}setavatar - Changes the avatar, to the photo you requested.
+	${prefix}setavatar - Changes the avatar, to the photo you requested. //Not available.
 	${prefix}git - Sends link to github repo${rb}`)
 	}
 	if(message.content.startsWith(prefix + 'servers')) {
@@ -44,6 +44,7 @@ bot.on("message", function(message) {
 		if(message.content.startsWith(prefix + 'pause')) {
 	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
 	}
+	
 	if(message.content.startsWith(prefix + 'eval')){
 		if(message.sender.id === config.owner_id){
 		try{
@@ -64,9 +65,7 @@ bot.on("message", function(message) {
 		}
 	}
 	 
-
-	
-			if(message.content.startsWith(prefix + 'resume')) {
+	 if(message.content.startsWith(prefix + 'resume')) {
 	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
 	}
 	
@@ -79,6 +78,11 @@ bot.on("message", function(message) {
 	if(message.content.startsWith(prefix + 'git')){
 		bot.sendMessage(message, "GitHub URL: https://github.com/developerCodex/musicbot")
 	}
+	
+	if(message.content.startsWith(prefix + 'setavatar')) {
+		bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
+	}
+	
 });
 
 bot.loginWithToken(config.token);
