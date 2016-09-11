@@ -19,12 +19,12 @@ bot.on("message", function(message) {
 	${prefix}help - Shows this message.
 	${prefix}ping - Ping/Pong with ms amount.
 	${prefix}servers Shows amount of servers.
-	${prefix}play - Plays music
-	${prefix}skip - Skips playing song
-	${prefix}pause - Pauses music
+	${prefix}play - Plays the song you requested.
+	${prefix}skip - Skips the playing song.
+	${prefix}pause - Pauses the current song.
 	${prefix}eval - Owner only.
-	${prefix}resume - Resumes paused music
-	${prefix}restart - Restarts bot
+	${prefix}resume - Resumes paused song
+	${prefix}restart - Restarts the bot (Owner only).
 	${prefix}invite - Creates OAuth URL for bot
 	${prefix}git - Sends link to github repo${rb}`)
 	}
