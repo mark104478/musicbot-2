@@ -1,7 +1,7 @@
 {
 "token":"[TOKEN]",
 "client_id":"[CLIENT ID]",
-"prefix":"[PREFIX",
-"owner_id":"[OWNER ID],
+"prefix":"[PREFIX]",
+"owner_id":"[OWNER ID]",
 "status":"[STATUS]"
 }
