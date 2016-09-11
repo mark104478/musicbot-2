@@ -49,6 +49,7 @@ bot.on("message", function(message) {
 	}
 	
 	if(message.content.startsWith(prefix + 'shutdown')) {
+				if(message.sender.id === config.owner_id){
 	bot.sendMessage(message, "Shutdown has been **initiated**.\nShutting down...") //Not completed.
 	}
 	
@@ -77,6 +78,7 @@ bot.on("message", function(message) {
 	}
 	
 				if(message.content.startsWith(prefix + 'restart')) {
+							if(message.sender.id === config.owner_id){
 	bot.sendMessage(message, 'Restart issued by **' + message.author.name + '**\nRestarting...')
 	}
 	if(message.content.startsWith(prefix + 'invite')){
