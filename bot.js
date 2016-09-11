@@ -66,7 +66,7 @@ if(message.content.startsWith(prefix + "ping")) {
 	}
 	
 	if(message.content.startsWith(prefix + 'say')) {
-		if(message.sender.id === config.owner.id){
+		if(message.sender.id === config.owner_id){
 		var say = message.content.split(" ").splice(1).join(" ");
 		bot.sendMessage(message, say);
 	}
