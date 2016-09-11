@@ -1,4 +1,4 @@
-![Logo](https://cdn.discordapp.com/attachments/211274061794377729/224400971470471168/OS-MB-Github-Transparent.png)
+![Logo](https://cdn.discordapp.com/attachments/211274061794377729/224402276687675393/OS-MB-Github-Transparent.svg)
 
 
 
