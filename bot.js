@@ -92,6 +92,27 @@ if(message.content.startsWith(prefix + "ping")) {
 			
 		}
 	}
+	
+		if(message.content.startsWith(prefix + 'setavatar')) {
+bot.on("message", (msg) => {
+		if(message.sender.id === config.owner_id){
+    if(msg.content.toLowerCase().startsWith("?setavatar")) {
+        var avatarURL = msg.content.substring(10);
+
+        request({
+            method: 'GET',
+            url: avatarURL,
+            encoding: null
+        }, (err, res, image) => {
+            if (err) return bot.sendMessage(message.channel, "Failed, to request image.");
+
+            bot.setAvatar(image)
+                .then(() => bot.sendMessage(message.channel, "Sucessfully changed avatar."))
+                .catch(err => bot.sendMessage(message.channel, "Failed changing avatar, try again later."));
+        });
+      }
+    }
+});
 	 
 	 if(message.content.startsWith(prefix + 'resume')) {
 	bot.sendMessage(message, "Resuming...")
@@ -110,29 +131,7 @@ if(message.content.startsWith(prefix + "ping")) {
 	if(message.content.startsWith(prefix + 'git')){
 		bot.sendMessage(message, "GitHub URL: **https://github.com/developerCodex/musicbot**")
 	}
-	
-	if(message.content.startsWith(prefix + 'setavatar')) {
-bot.on("message", (msg) => {
-  if (message.author.id === "137792552878342144") {
-    if(msg.content.toLowerCase().startsWith("?setavatar")) {
-        var avatarURL = msg.content.substring(10);
-
-        request({
-            method: 'GET',
-            url: avatarURL,
-            encoding: null
-        }, (err, res, image) => {
-            if (err) return bot.sendMessage(message.channel, "Failed, to request image.");
-
-            bot.setAvatar(image)
-                .then(() => bot.sendMessage(message.channel, "Sucessfully changed avatar."))
-                .catch(err => bot.sendMessage(message.channel, "Failed changing avatar, try again later."));
-        });
-      }
-    }
-});
-
-});
+	});
 
 bot.loginWithToken(config.token);
 // This version of discord.js is V8, you may install it using npm install discord.js#indev-old
