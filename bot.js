@@ -49,12 +49,12 @@ if(message.content.startsWith(prefix + "ping")) {
 	bot.sendMessage(message, 'Skipping song...');
 	}
 	
-		if(message.content.startsWith(prefix + 'pause')) {
+	if(message.content.startsWith(prefix + 'pause')) {
 	bot.sendMessage(message, "Pausing...")
 	}
 	
 	if(message.content.startsWith(prefix + 'shutdown')) {
-				if(message.sender.id === config.owner_id){
+	if(message.sender.id === config.owner_id){
 	bot.sendMessage(message, "Shutdown has been **initiated**.\nShutting down...") //Not completed.
 	}
 	}
@@ -83,8 +83,8 @@ if(message.content.startsWith(prefix + "ping")) {
 	bot.sendMessage(message, "Resuming...")
 	}
 	
-				if(message.content.startsWith(prefix + 'restart')) {
-							if(message.sender.id === config.owner_id){
+	if(message.content.startsWith(prefix + 'restart')) {
+	if(message.sender.id === config.owner_id){
 	bot.sendMessage(message, 'Restart issued by **' + message.author.name + '**\nRestarting...')
 	}
 		}
@@ -97,7 +97,7 @@ if(message.content.startsWith(prefix + "ping")) {
 	}
 	
 	if(message.content.startsWith(prefix + 'setavatar')) {
-		bot.sendMessage(message, "Undermaintance.")
+		bot.sendMessage(message, "Undermaintance, check back later.")
 	}
 	
 });
