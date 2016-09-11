@@ -1,13 +1,13 @@
 [![Open Source Music Bot Logo](https://cdn.discordapp.com/attachments/211274061794377729/224402276687675393/OS-MB-Github-Transparent.svg)](https://github.com/developerCodex/musicbot)
 <br />
 <br />
-A music bot you may run yourself, with just a little of mintues.
+A music bot you may run yourself, with just a little of seconds, away from your bot being online.
 
 This bot will require: **Node, NPM, Git, discord.js#indev-old, FFMPEG, Python 2.7 (optional)**, for more information on how to install the programs, please check the wiki.
 
 If you encounter any **bugs or issues** thoughtout the process of trying to get your bot running, then please **create an issue on the github.**, and we'll check into it, as soon as we can. 
 
-PS: Please keep an eye on the github as changes will be happening as you speak.
+PS: Please keep an eye on the github as changes will be happening as you speak. 
 
 [Music Bot Support Server](https://discord.gg/CVyVgap)
 
