@@ -1,4 +1,5 @@
 // Don't mess with this file it will ruin your bot, to change stuff edit config.json
+//PS: This bot is not completed, it may error or not have correct permissions.
 var Discord = require("discord.js");
 var config = require('./config.json')
 var bot = new Discord.Client();
