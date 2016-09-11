@@ -81,6 +81,8 @@ bot.on("message", function(message) {
 				if(message.content.startsWith(prefix + 'restart')) {
 							if(message.sender.id === config.owner_id){
 	bot.sendMessage(message, 'Restart issued by **' + message.author.name + '**\nRestarting...')
+		}else{
+			bot.sendMessage(message, "Sorry, you do not have permissisons to use this command " +message.author.name)
 	}
 				}
 				
