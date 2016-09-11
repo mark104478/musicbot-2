@@ -4,9 +4,6 @@ var config = require('./config.json')
 var bot = new Discord.Client();
 var prefix = config.prefix
 var rb = "```"
-var request = require('request');
-var ytdl = require("ytdl-core");
-var ffmpeg = require("ffmpeg");
 
 bot.on('ready',function(){
 	bot.setStatus('online', config.status)
