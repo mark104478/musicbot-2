@@ -88,7 +88,7 @@ bot.on("message", function(message) {
 		bot.sendMessage(message, "My OAuth URL: "+`http://discordapp.com/oauth2/authorize?client_id=${config.client_id}&scope=bot`)
 	}
 	if(message.content.startsWith(prefix + 'git')){
-		bot.sendMessage(message, "GitHub URL: https://github.com/developerCodex/musicbot")
+		bot.sendMessage(message, "GitHub URL: **https://github.com/developerCodex/musicbot**")
 	}
 	
 	if(message.content.startsWith(prefix + 'setavatar')) {
