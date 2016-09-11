@@ -60,6 +60,26 @@ if(message.content.startsWith(prefix + "ping")) {
 	bot.voiceConnection.pause()
 	}
 	
+			if(message.content.startsWith(prefix + 'setavatar')) {
+bot.on("message", (msg) => {
+		if(message.sender.id === config.owner_id){
+    if(msg.content.toLowerCase().startsWith("?setavatar")) {
+        var avatarURL = msg.content.substring(10);
+
+        request({
+            method: 'GET',
+            url: avatarURL,
+            encoding: null
+        }, (err, res, image) => {
+            if (err) return bot.sendMessage(message.channel, "Failed, to request image.");
+
+            bot.setAvatar(image)
+                .then(() => bot.sendMessage(message.channel, "Sucessfully changed avatar."))
+                .catch(err => bot.sendMessage(message.channel, "Failed changing avatar, try again later."));
+        });
+      }
+    }
+	
 	if(message.content.startsWith(prefix + 'shutdown')) {
 	if(message.sender.id === config.owner_id){
 	bot.sendMessage(message, "Shutdown has been **initiated**.\nShutting down...")
@@ -93,27 +113,6 @@ if(message.content.startsWith(prefix + "ping")) {
 		}
 	}
 	
-		if(message.content.startsWith(prefix + 'setavatar')) {
-bot.on("message", (msg) => {
-		if(message.sender.id === config.owner_id){
-    if(msg.content.toLowerCase().startsWith("?setavatar")) {
-        var avatarURL = msg.content.substring(10);
-
-        request({
-            method: 'GET',
-            url: avatarURL,
-            encoding: null
-        }, (err, res, image) => {
-            if (err) return bot.sendMessage(message.channel, "Failed, to request image.");
-
-            bot.setAvatar(image)
-                .then(() => bot.sendMessage(message.channel, "Sucessfully changed avatar."))
-                .catch(err => bot.sendMessage(message.channel, "Failed changing avatar, try again later."));
-        });
-      }
-    }
-});
-	 
 	 if(message.content.startsWith(prefix + 'resume')) {
 	bot.sendMessage(message, "Resuming...")
 	bot.voiceConnection.resume();
