@@ -5,7 +5,7 @@ A music bot you may run yourself, with just a little of seconds, away from your 
 
 This bot will require: **Node, NPM, Git, discord.js#indev-old, FFMPEG, Python 2.7 (optional)**, for more information on how to install the programs, please check the wiki.
 
-If you encounter any **bugs or issues** throughout the process of trying to get your bot running, then please **create an issue on the github.**, and we'll check into it, as soon as we can. 
+If you encounter any **bugs or issues** throughout the process of trying to get your bot running, then please **create an issue on the github**, and we'll check into it, as soon as we can. 
 
 [Music Bot Support Server](https://discord.gg/CVyVgap)
 
