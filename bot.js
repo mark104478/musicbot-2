@@ -46,11 +46,11 @@ if(message.content.startsWith(prefix + "ping")) {
 	}
 	
 	if(message.content.startsWith(prefix + 'skip')) {
-	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
+	bot.sendMessage(message, 'Skipping song...');
 	}
 	
 		if(message.content.startsWith(prefix + 'pause')) {
-	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
+	bot.sendMessage(message, "Pausing...")
 	}
 	
 	if(message.content.startsWith(prefix + 'shutdown')) {
@@ -80,7 +80,7 @@ if(message.content.startsWith(prefix + "ping")) {
 	}
 	 
 	 if(message.content.startsWith(prefix + 'resume')) {
-	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
+	bot.sendMessage(message, "Resuming...")
 	}
 	
 				if(message.content.startsWith(prefix + 'restart')) {
@@ -97,7 +97,7 @@ if(message.content.startsWith(prefix + "ping")) {
 	}
 	
 	if(message.content.startsWith(prefix + 'setavatar')) {
-		bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
+		bot.sendMessage(message, "Undermaintance.")
 	}
 	
 });
