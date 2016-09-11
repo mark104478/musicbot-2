@@ -16,20 +16,20 @@ bot.on("message", function(message) {
 	if(message.content.startsWith(prefix + 'help')){
 		bot.sendMessage(message,"Check your DM's **"+message.sender.name+"**")
 		bot.sendMessage(message.sender.id,`${rb}ruby
-	${prefix}help - Shows this message
-	${prefix}ping - Ping/Pong
-	${prefix}servers shows how many servers bot is in
-	${prefix}play - plays music
+	${prefix}help - Shows this message.
+	${prefix}ping - Ping/Pong with ms amount.
+	${prefix}servers Shows amount of servers.
+	${prefix}play - Plays music
 	${prefix}skip - Skips playing song
-	${prefix}pause - pauses music
-	${prefix}eval - Owner only, tests code
-	${prefix}resume - resumes paused music
-	${prefix}restart - restarts bot
+	${prefix}pause - Pauses music
+	${prefix}eval - Owner only.
+	${prefix}resume - Resumes paused music
+	${prefix}restart - Restarts bot
 	${prefix}invite - Creates OAuth URL for bot
-	${prefix}git - sends link to github repo${rb}`)
+	${prefix}git - Sends link to github repo${rb}`)
 	}
 	if(message.content.startsWith(prefix + 'servers')) {
-	bot.sendMessage(message, "I'm currently on " +bot.servers.length + ' servers')
+	bot.sendMessage(message, "I'm currently on **" +bot.servers.length + "** servers")
 	}
 	
 	if(message.content.startsWith(prefix + 'play')) {
