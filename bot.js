@@ -49,7 +49,7 @@ bot.on("message", function(message) {
 	}
 	
 	if(message.content.startsWith(prefix + 'shutdown')) {
-	bot.sendMessage(message, "Shutdown has been **initiated**.\nShutting down...")
+	bot.sendMessage(message, "Shutdown has been **initiated**.\nShutting down...") //Not completed.
 	}
 	
 	if(message.content.startsWith(prefix + 'eval')){
