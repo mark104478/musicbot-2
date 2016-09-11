@@ -69,7 +69,7 @@ bot.on("message", function(message) {
 			bot.sendMessage(message,"```diff\n- "+err+"```")
 		}
 		}else{
-			bot.sendMessage(message, "Sorry, you do not have permissisons to use this command, **" +message.author.name + " **.")
+			bot.sendMessage(message, "Sorry, you do not have permissisons to use this command, **" +message.author.name + "**.")
 			
 		}
 	}
