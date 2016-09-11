@@ -12,3 +12,5 @@ If you encounter any **bugs or issues** throughout the process of trying to get 
 [Go here for instructions](https://github.com/developerCodex/musicbot/wiki/Installation)
 
 [Discord.js Documentation](http://discordjs.readthedocs.io/en/8.1.0/index.html)
+
+[Credit](https://github.com/developerCodex/musicbot/wiki/Credit)
