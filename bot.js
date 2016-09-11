@@ -32,15 +32,15 @@ bot.on("message", function(message) {
 	bot.sendMessage(message, "I'm currently on " +bot.servers.length + ' servers')
 	}
 	
-	if(message.content.startsWith(prefix + 'play')) { //This command is currenlty not available at this time.
+	if(message.content.startsWith(prefix + 'play')) {
 	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
 	}
 	
-	if(message.content.startsWith(prefix + 'skip')) { //This command is currenlty not available at this time.
+	if(message.content.startsWith(prefix + 'skip')) {
 	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
 	}
 	
-		if(message.content.startsWith(prefix + 'pause')) { //This command is currenlty not available at this time.
+		if(message.content.startsWith(prefix + 'pause')) {
 	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
 	}
 	if(message.content.startsWith(prefix + 'eval')){
@@ -58,25 +58,25 @@ bot.on("message", function(message) {
 			bot.sendMessage(message,"```diff\n- "+err+"```")
 		}
 		}else{
-			bot.sendMessage(message,"U NO HAVE PERMS")
+			bot.sendMessage(message, "Sorry, you do not have permissisons to use this command " +message.author.name)
 			
 		}
 	}
 	 
 
 	
-			if(message.content.startsWith(prefix + 'resume')) { //This command is currenlty not available at this time.
+			if(message.content.startsWith(prefix + 'resume')) {
 	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
 	}
 	
-				if(message.content.startsWith(prefix + 'restart')) { //This command is currenlty not available at this time.
+				if(message.content.startsWith(prefix + 'restart')) {
 	bot.sendMessage(message, 'Restart issued by ' + message.author.name + '\nRestarting sucessfully.')
 	}
 	if(message.content.startsWith(prefix + 'invite')){
-		bot.sendMessage(message, "My Oauth URL: "+`http://discordapp.com/oauth2/authorize?client_id=${config.client_id}&scope=bot`)
+		bot.sendMessage(message, "My OAuth URL: "+`http://discordapp.com/oauth2/authorize?client_id=${config.client_id}&scope=bot`)
 	}
 	if(message.content.startsWith(prefix + 'git')){
-		bot.sendMessage(message, "Github URL: https://github.com/developerCodex/musicbot")
+		bot.sendMessage(message, "GitHub URL: https://github.com/developerCodex/musicbot")
 	}
 });
 
