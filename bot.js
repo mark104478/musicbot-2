@@ -4,6 +4,9 @@ var config = require('./config.json')
 var bot = new Discord.Client();
 var prefix = config.prefix
 var rb = "```"
+var request = require('request');
+var ytdl = require("ytdl-core");
+var ffmpeg = require("ffmpeg");
 
 bot.on('ready',function(){
 	bot.setStatus('online', config.status)
@@ -27,9 +30,11 @@ if(message.content.startsWith(prefix + "ping")) {
 	${prefix}ping - Ping/Pong with ms amount.
 	${prefix}servers Shows amount of servers.
 	${prefix}play - Plays the song you requested.
+	${prefix}voteskip - You may vote to skip a song.
 	${prefix}skip - Skips the playing song.
 	${prefix}pause - Pause the current song.
 	${prefix}eval - Owner only.
+	${prefix}say - Admin only.
 	${prefix}resume - Resumes paused song.
 	${prefix}restart - Restarts the bot (Owner only).
 	${prefix}shutdown - Power off the bot (Owner only).
@@ -41,22 +46,31 @@ if(message.content.startsWith(prefix + "ping")) {
 	bot.sendMessage(message, "I'm currently on **" +bot.servers.length + "** server(s)")
 	}
 	
-	if(message.content.startsWith(prefix + 'play')) {
-	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later.")
+	if(message.content.startsWith(prefix + 'play')) {	
+	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later."); //Should be done soon.
 	}
 	
 	if(message.content.startsWith(prefix + 'skip')) {
 	bot.sendMessage(message, 'Skipping song...');
+	bot.voiceConnetion.stopPlaying();
 	}
 	
 	if(message.content.startsWith(prefix + 'pause')) {
-	bot.sendMessage(message, "Pausing...")
+	bot.sendMessage(message, "Pausing music...")
+	bot.voiceConnection.pause()
 	}
 	
 	if(message.content.startsWith(prefix + 'shutdown')) {
 	if(message.sender.id === config.owner_id){
-	bot.sendMessage(message, "Shutdown has been **initiated**.\nShutting down...") //Not completed.
+	bot.sendMessage(message, "Shutdown has been **initiated**.\nShutting down...")
+	setTimeout(function () {bot.logout()}, 1000)
+	setTimeout(function () {process.exit()}, 2000)
 	}
+	}
+	
+	if(message.content.startsWith(prefix + 'say')) {
+		var say = message.content.split(" ").splice(1).join(" ");
+		bot.sendMessage(message, say);
 	}
 	
 	if(message.content.startsWith(prefix + 'eval')){
@@ -81,6 +95,7 @@ if(message.content.startsWith(prefix + "ping")) {
 	 
 	 if(message.content.startsWith(prefix + 'resume')) {
 	bot.sendMessage(message, "Resuming...")
+	bot.voiceConnection.resume();
 	}
 	
 	if(message.content.startsWith(prefix + 'restart')) {
@@ -97,9 +112,25 @@ if(message.content.startsWith(prefix + "ping")) {
 	}
 	
 	if(message.content.startsWith(prefix + 'setavatar')) {
-		bot.sendMessage(message, "Undermaintance, check back later.")
-	}
-	
+bot.on("message", (msg) => {
+  if (message.author.id === "137792552878342144") {
+    if(msg.content.toLowerCase().startsWith("?setavatar")) {
+        var avatarURL = msg.content.substring(10);
+
+        request({
+            method: 'GET',
+            url: avatarURL,
+            encoding: null
+        }, (err, res, image) => {
+            if (err) return bot.sendMessage(message.channel, "Failed, to request image.");
+
+            bot.setAvatar(image)
+                .then(() => bot.sendMessage(message.channel, "Sucessfully changed avatar."))
+                .catch(err => bot.sendMessage(message.channel, "Failed changing avatar, try again later."));
+        });
+      }
+    }
+
 });
 
 bot.loginWithToken(config.token);
