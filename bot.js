@@ -70,7 +70,7 @@ bot.on("message", function(message) {
 	}
 	
 				if(message.content.startsWith(prefix + 'restart')) {
-	bot.sendMessage(message, 'Restart issued by ' + message.author.name + '\nRestarting sucessfully.')
+	bot.sendMessage(message, 'Restart issued by **' + message.author.name + '**\nRestarting...')
 	}
 	if(message.content.startsWith(prefix + 'invite')){
 		bot.sendMessage(message, "My OAuth URL: "+`http://discordapp.com/oauth2/authorize?client_id=${config.client_id}&scope=bot`)
