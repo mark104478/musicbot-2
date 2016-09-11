@@ -52,6 +52,7 @@ bot.on("message", function(message) {
 				if(message.sender.id === config.owner_id){
 	bot.sendMessage(message, "Shutdown has been **initiated**.\nShutting down...") //Not completed.
 	}
+	}
 	
 	if(message.content.startsWith(prefix + 'eval')){
 		if(message.sender.id === config.owner_id){
@@ -81,6 +82,8 @@ bot.on("message", function(message) {
 							if(message.sender.id === config.owner_id){
 	bot.sendMessage(message, 'Restart issued by **' + message.author.name + '**\nRestarting...')
 	}
+				}
+				
 	if(message.content.startsWith(prefix + 'invite')){
 		bot.sendMessage(message, "My OAuth URL: "+`http://discordapp.com/oauth2/authorize?client_id=${config.client_id}&scope=bot`)
 	}
