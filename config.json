@@ -2,6 +2,6 @@
 "token":"[TOKEN]",
 "client_id":"[CLIENT ID]",
 "prefix":"[PREFIX",
-"owner_id":"[OWNER ID]"
-"status":"[GAME STATUS]"
+"owner_id":"[OWNER ID],
+"status":"[STATUS]"
 }
