@@ -12,9 +12,14 @@ bot.on('ready',function(){
 
 bot.on("message", function(message) {
 	if(message.sender.bot) return;
-	if(message.content.startsWith(prefix + 'ping')) {
-	bot.reply(message, "Pong! **" + message.author.name+"**");
-    }
+if(message.content.startsWith(prefix + "ping")) {
+      bot.sendMessage(message, "Pong!", function(error, msg) {
+          if (!error) {
+              bot.updateMessage(msg, "Pong, **" + (msg.timestamp - message.timestamp) + "**ms");
+          }
+      });
+  }
+  
 	if(message.content.startsWith(prefix + 'help')){
 		bot.sendMessage(message,"Check your DM's **"+message.sender.name+"**")
 		bot.sendMessage(message.sender.id,`${rb}ruby
