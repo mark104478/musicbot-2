@@ -1,7 +1,5 @@
 ![Logo](https://cdn.discordapp.com/attachments/211274061794377729/224402276687675393/OS-MB-Github-Transparent.svg)
 <br />
-<br />
-<br />
 A music bot you may run yourself, with just a little of mintues.
 
 This bot will require: **Node, NPM, Git, discord.js#indev-old, FFMPEG, Python 2.7**, for more information on how to install the programs, please check the wiki.
