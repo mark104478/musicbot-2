@@ -26,7 +26,7 @@ bot.on("message", function(message) {
 	${prefix}resume - Resumes paused song.
 	${prefix}restart - Restarts the bot (Owner only).
 	${prefix}invite - Creates OAuth URL for bot
-	${prefix}setavatar - Changes the avatar, to the photo you requested. //Not available.
+	${prefix}setavatar - Changes the avatar, to the photo you requested.
 	${prefix}git - Sends link to github repo${rb}`)
 	}
 	if(message.content.startsWith(prefix + 'servers')) {
