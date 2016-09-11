@@ -5,7 +5,7 @@ var prefix = config.prefix
 var rb = "```"
 
 bot.on('ready',function(){
-	bot.setStatus('online', 'with GitHub')
+	bot.setStatus('online', config.status)
 	console.log(`Logged in as: ${bot.user.name} (${bot.user.id}), prefix is ${config.prefix}`)
 })
 
