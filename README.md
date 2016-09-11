@@ -8,4 +8,6 @@ If you encounter any **bugs or issues** thoughtout the process of trying to get 
 
 (The music bot should be fully functional soon, and should be up shortly, if you would like to add or try to make a request to change something, then please make a pull request.)
 
+[Music Bot Support Server](https://discord.gg/CVyVgap)
+
 [Go here for instructions](https://github.com/developerCodex/musicbot/wiki/Installation)
