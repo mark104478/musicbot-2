@@ -10,3 +10,5 @@ PS: Please keep an eye on the github as changes will be happening as you speak.
 [Music Bot Support Server](https://discord.gg/CVyVgap)
 
 [Go here for instructions](https://github.com/developerCodex/musicbot/wiki/Installation)
+
+[Discord.js Documentation](http://discordjs.readthedocs.io/en/8.1.0/index.html)
