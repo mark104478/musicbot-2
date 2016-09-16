@@ -137,8 +137,8 @@ if(message.content.startsWith(prefix + "ping")) {
 		if(message.channel.permissionsOf(message.sender).hasPermission("kickMembers") || message.channel.permissionsOf(message.sender).hasPermission("banMembers")){
 			var c = message.content;
 			var usr = message.mentions[0];
-			var rsn = c.split(" ").splice(1).join(" ").replace(usr,"")
-			var caseid = genToken(10)
+			var rsn = c.split(" ").splice(1).join(" ").replace(usr,"").replace("<@!"+usr.id+">","")
+			var caseid = genToken(20)
 			function genToken(length) {
     var key = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
