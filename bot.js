@@ -1,4 +1,5 @@
 // Don't mess with this file it will ruin your bot, to change stuff edit config.json
+//PS: This bot is not completed, it may error or not have correct permissions.
 var Discord = require("discord.js");
 var config = require('./config.json')
 var bot = new Discord.Client();
@@ -56,6 +57,67 @@ if(message.content.startsWith(prefix + "ping")) {
 	bot.sendMessage(message, "Pausing music...")
 	bot.voiceConnection.pause()
 	}
+	if(message.content.startsWith(prefix + 'reminder')){
+		var c = message.content
+		var msg = c.split(" ").splice(1).join(" ").split("|")
+		var time = parseTime(msg[0])
+		var reminder = msg[1]
+		setTimeout(function(){
+			bot.sendMessage(message.sender.id,"Reminder: ```"+reminder+"```")
+		},time.countdown)
+		function parseTime(str) {
+    var num, time;
+    if(str.indexOf(" ")>-1) {
+        num = str.substring(0, str.indexOf(" "));
+        time = str.substring(str.indexOf(" ")+1).toLowerCase();
+    } else {
+        for(var i=0; i<str.length; i++) {
+            if(str.substring(0, i) && !isNaN(str.substring(0, i)) && isNaN(str.substring(0, i+1))) {
+                num = str.substring(0, i);
+                time = str.substring(i);
+                break;
+            }
+        }
+    }
+    if(!num || isNaN(num) || num<1 || !time || ["d", "day", "days", "h", "hr", "hrs", "hour", "hours", "m", "min", "mins", "minute", "minutes", "s", "sec", "secs", "second", "seconds"].indexOf(time)==-1) {
+        return;
+    }
+    var countdown = 0;
+    switch(time) {
+        case "d":
+        case "day":
+        case "days":
+            countdown = num * 86400000;
+            break;
+        case "h":
+        case "hr":
+        case "hrs":
+        case "hour":
+        case "hours":
+            countdown = num * 3600000;
+            break;
+        case "m":
+        case "min":
+        case "mins":
+        case "minute":
+        case "minutes":
+            countdown = num * 60000;
+            break;
+        case "s":
+        case "sec":
+        case "secs":
+        case "second":
+        case "seconds":
+            countdown = num * 1000;
+            break;
+    }
+    return {
+        num: num,
+        time: time,
+        countdown: countdown
+    };
+}
+}
 
 	if(message.content.startsWith(prefix + 'shutdown')) {
 	if(message.sender.id === config.owner_id){
