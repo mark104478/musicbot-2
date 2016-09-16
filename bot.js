@@ -150,7 +150,7 @@ if(message.content.startsWith(prefix + "ping")) {
     return key;
 }
 
-var warns[caseid] = {
+warns[caseid] = {
 	"admin":{
 		"name":message.sender.name,
 		"discrim":message.sender.discriminator,
