@@ -59,6 +59,7 @@ if(message.content.startsWith(prefix + "ping")) {
 	bot.voiceConnection.pause()
 	}
 	if(message.content.startsWith(prefix + 'reminder')){
+		try{
 		var c = message.content
 		var msg = c.split(" ").splice(1).join(" ").split("|")
 		var time = parseTime(msg[0])
@@ -117,6 +118,9 @@ if(message.content.startsWith(prefix + "ping")) {
         time: time,
         countdown: countdown
     };
+}
+}catch(err){
+ bot.sendMessage(message, "Is that really a number?")
 }
 }
 
