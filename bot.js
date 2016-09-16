@@ -60,7 +60,7 @@ if(message.content.startsWith(prefix + "ping")) {
 		if(args[0] === "remove"){
 			sbl.splice(sbl.indexOf(args[1]))
 			fs.writeFile("./data/blservers.json",JSON.stringify(sbl))
-		}else if(args[1] === "add"){
+		}else if(args[0] === "add"){
 			sbl.push(args[1])
 			fs.writeFile("./data/blservers.json",JSON.stringify(sbl))
 		}else{
