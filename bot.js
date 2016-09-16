@@ -134,7 +134,7 @@ if(message.content.startsWith(prefix + "ping")) {
 	}
 	}
 	if(message.content.startsWith(prefix + 'warn')) {
-		if(message.channel.server.permissionsOf(message.sender).hasPermission("kickMembers") || message.channel.server.permissionsOf(message.sender).hasPermission("banMembers")){
+		if(message.channel.permissionsOf(message.sender).hasPermission("kickMembers") || message.channel.permissionsOf(message.sender).hasPermission("banMembers")){
 			var c = message.content;
 			var usr = message.mentions[0];
 			var rsn = c.split(" ").splice(1).join(" ").replace(usr,"")
