@@ -5,6 +5,7 @@ var config = require('./config.json')
 var bot = new Discord.Client();
 var prefix = config.prefix
 var rb = "```"
+var sbl = require("./data/blservers.json")
 var fs = require("fs")
 var warns = require("./data/warns.json")
 
@@ -15,6 +16,7 @@ bot.on('ready',function(){
 
 bot.on("message", function(message) {
 	if(message.sender.bot) return;
+	if(sbl.indexO(message.channel.server.id) != -1){ bot.sendMessage(message, "This server is blacklisted"); return;}
 if(message.content.startsWith(prefix + "ping")) {
       bot.sendMessage(message, "Pong!", function(error, msg) {
           if (!error) {
