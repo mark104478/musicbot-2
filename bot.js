@@ -5,6 +5,8 @@ var config = require('./config.json')
 var bot = new Discord.Client();
 var prefix = config.prefix
 var rb = "```"
+var fs = require("fs")
+var warns = require("./data/warns.json")
 
 bot.on('ready',function(){
 	bot.setStatus('online', config.status)
@@ -130,6 +132,48 @@ if(message.content.startsWith(prefix + "ping")) {
 	setTimeout(function () {bot.logout()}, 1000)
 	setTimeout(function () {process.exit()}, 2000)
 	}
+	}
+	if(message.content.startsWith(prefix + 'warn')) {
+		if(message.channel.server.permissionsOf(message.sender).hasPermission("kickMembers") || message.channel.server.permissionsOf(message.sender).hasPermission("banMembers")){
+			var c = message.content;
+			var usr = message.mentions[0];
+			var rsn = c.split(" ").splice(1).join(" ").replace(usr,"")
+			var caseid = genToken(10)
+			function genToken(length) {
+    var key = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for(var i=0; i<length; i++) {
+        key += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    return key;
+}
+
+var warns[caseid] = {
+	"admin":{
+		"name":message.sender.name,
+		"discrim":message.sender.discriminator,
+		"id":message.sender.id
+	},
+	"user":{
+		"name":usr.name,
+		"discrim":usr.discrim,
+		"id":usr.id
+	},
+	"server":{
+		"name":message.channel.server.name,
+		"id": message.channel.server.id,
+		"channel":message.channel.name,
+		"channel_id":message.channel.id,
+	},
+	"reason":rsn
+}
+bot.sendMessage(message, usr + " was  warned for `"+rsn+"`, check logs for more info")
+fs.writeFile("./data/warns.json",JSON.stringify(warns))
+		}else{
+			bot.sendMessage(message,"You have to be able to kick/ban members to use this command")
+		}
 	}
 	
 	if(message.content.startsWith(prefix + 'say')) {
