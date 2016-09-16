@@ -38,7 +38,8 @@ if(message.content.startsWith(prefix + "ping")) {
 	${prefix}shutdown - Power off the bot (Owner only).
 	${prefix}invite - Creates OAuth URL for bot.
 	${prefix}setavatar - Changes the avatar, to the photo you requested.
-	${prefix}git - Sends link to github repo.${rb}`)
+	${prefix}git - Sends link to github repo.
+	${prefix}reminder <time>|<reminder> - Reminds you of something in a certain time${rb}`)
 	}
 	if(message.content.startsWith(prefix + 'servers')) {
 	bot.sendMessage(message, "I'm currently on **" +bot.servers.length + "** server(s)")
@@ -63,7 +64,7 @@ if(message.content.startsWith(prefix + "ping")) {
 		var time = parseTime(msg[0])
 		var reminder = msg[1]
 		setTimeout(function(){
-			bot.sendMessage(message.sender.id,"Reminder: ```"+reminder+"```")
+			bot.sendMessage(message,message.sender + " Reminder: ```"+reminder+"```")
 		},time.countdown)
 		function parseTime(str) {
     var num, time;
