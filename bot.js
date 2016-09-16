@@ -16,7 +16,7 @@ bot.on('ready',function(){
 
 bot.on("message", function(message) {
 	if(message.sender.bot) return;
-	if(sbl.indexOf(message.channel.server.id) != -1){ bot.sendMessage(message, "This server is blacklisted"); return;}
+	if(sbl.indexOf(message.channel.server.id) != -1 && message.content.startsWith(prefix)){ bot.sendMessage(message, "This server is blacklisted"); return;}
 if(message.content.startsWith(prefix + "ping")) {
       bot.sendMessage(message, "Pong!", function(error, msg) {
           if (!error) {
