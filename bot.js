@@ -43,7 +43,8 @@ if(message.content.startsWith(prefix + "ping")) {
 	${prefix}invite - Creates OAuth URL for bot.
 	${prefix}setavatar - Changes the avatar, to the photo you requested.
 	${prefix}git - Sends link to github repo.
-	${prefix}reminder <time>|<reminder> - Reminds you of something in a certain time${rb}`)
+	${prefix}reminder <time>|<reminder> - Reminds you of something in a certain time
+	${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from blacklist${rb}`)
 	}
 	if(message.content.startsWith(prefix + 'servers')) {
 	bot.sendMessage(message, "I'm currently on **" +bot.servers.length + "** server(s)")
@@ -53,16 +54,20 @@ if(message.content.startsWith(prefix + "ping")) {
 	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later."); //Should be done soon.
 	}
 	if(message.content.startsWith(prefix + "serverblacklist")){
+		if(message.sender.id = config.owner_id){
 		var c = message.content.split(" ").splice(1).join(" ")
 		var args = c.split(" ");
 		if(args[0] === "remove"){
-			sbl.splice(sbl.indexOf(args[1])()
+			sbl.splice(sbl.indexOf(args[1]))
 			fs.writeFile("./data/blservers.json",JSON.stringify(sbl))
 		}else if(args[1] === "add"){
 			sbl.push(args[1])
 			fs.writeFile("./data/blservers.json",JSON.stringify(sbl))
 		}else{
 			bot.sendMessage(message, `You need to specify what to do! ${prefix}serverblacklist <add/remove> <server id>`)
+		}
+		}else{
+			bot.sendMessage(message,"Owner only!")
 		}
 		
 	}
