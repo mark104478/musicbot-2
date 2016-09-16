@@ -52,7 +52,20 @@ if(message.content.startsWith(prefix + "ping")) {
 	if(message.content.startsWith(prefix + 'play')) {	
 	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later."); //Should be done soon.
 	}
-	
+	if(message.content.startsWith(prefix + "serverblacklist")){
+		var c = message.content.split(" ").splice(1).join(" ")
+		var args = c.split(" ");
+		if(args[0] === "remove"){
+			sbl.splice(sbl.indexOf(args[1])()
+			fs.writeFile("./data/blservers.json",JSON.stringify(sbl))
+		}else if(args[1] === "add"){
+			sbl.push(args[1])
+			fs.writeFile("./data/blservers.json",JSON.stringify(sbl))
+		}else{
+			bot.sendMessage(message, `You need to specify what to do! ${prefix}serverblacklist <add/remove> <server id>`)
+		}
+		
+	}
 	if(message.content.startsWith(prefix + 'skip')) {
 	bot.sendMessage(message, 'Skipping song...');
 	bot.voiceConnetion.stopPlaying();
