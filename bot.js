@@ -43,6 +43,7 @@ if(message.content.startsWith(prefix + "ping")) {
 	${prefix}shutdown - Power off the bot (Owner only).
 	${prefix}invite - Creates OAuth URL for bot.
 	${prefix}git - Sends link to github repo.
+	${prefix}warn <user> <reason> - Warns a user for the thing they did wrong.
 	${prefix}reminder <time>|<reminder> - Reminds you of something in a certain time
 	${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from blacklist${rb}`)
 	}
