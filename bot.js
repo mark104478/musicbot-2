@@ -164,7 +164,7 @@ bot.on("message", function(message) {
 				process.exit()
 			}, 2000)
 		}
-<<<<<<< HEAD
+
 
 	}
 	if(message.content.startsWith(prefix + 'skip')) {
