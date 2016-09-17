@@ -67,7 +67,7 @@ if(message.content.startsWith(prefix + "ping")) {
 			bot.sendMessage(message, `You need to specify what to do! ${prefix}serverblacklist <add/remove> <server id>`)
 		}
 		}else{
-			bot.sendMessage(message,"Owner only!")
+			bot.sendMessage(message, "Sorry, this command is for the owner only.")
 		}
 		
 	}
@@ -80,6 +80,7 @@ if(message.content.startsWith(prefix + "ping")) {
 	bot.sendMessage(message, "Pausing music...")
 	bot.voiceConnection.pause()
 	}
+	
 	if(message.content.startsWith(prefix + 'reminder')){
 		try{
 		var c = message.content
