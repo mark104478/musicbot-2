@@ -3,6 +3,7 @@
 var Discord = require("discord.js");
 var config = require('./config.json')
 var bot = new Discord.Client();
+var modprefix = config.modprefix
 var prefix = config.prefix
 var rb = "```"
 var sbl = require("./data/blservers.json")
