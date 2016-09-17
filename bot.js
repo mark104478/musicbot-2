@@ -42,7 +42,6 @@ if(message.content.startsWith(prefix + "ping")) {
 	${prefix}restart - Restarts the bot (Owner only).
 	${prefix}shutdown - Power off the bot (Owner only).
 	${prefix}invite - Creates OAuth URL for bot.
-	${prefix}setavatar - Changes the avatar, to the photo you requested.
 	${prefix}git - Sends link to github repo.
 	${prefix}reminder <time>|<reminder> - Reminds you of something in a certain time
 	${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from blacklist${rb}`)
