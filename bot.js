@@ -149,7 +149,7 @@ bot.on("message", function(message) {
 			}
 		} catch (err) {
 			bot.sendMessage(message, "Is that really a number?")
->>>>>>> eb5899e42e412b344222bad74561999856fcb095
+
 		}
 	}
 
@@ -249,20 +249,17 @@ bot.on("message", function(message) {
 	setTimeout(function () {process.exit()}, 2000)
 	}
 	}
-	if(message.content.startsWith(prefix + 'warn')) {
-		if(message.channel.permissionsOf(message.sender).hasPermission("kickMembers") || message.channel.permissionsOf(message.sender).hasPermission("banMembers")){
-=======
-	}
+
 	if (message.content.startsWith(prefix + 'warn')) {
 		if (message.channel.permissionsOf(message.sender).hasPermission("kickMembers") || message.channel.permissionsOf(message.sender).hasPermission("banMembers")) {
->>>>>>> eb5899e42e412b344222bad74561999856fcb095
+
 			var c = message.content;
 			var usr = message.mentions[0];
 			var rsn = c.split(" ").splice(1).join(" ").replace(usr, "").replace("<@!" + usr.id + ">", "")
 			var caseid = genToken(20)
 
 			function genToken(length) {
-<<<<<<< HEAD
+
     var key = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -334,7 +331,7 @@ fs.writeFile("./data/warns.json",JSON.stringify(warns))
 	if(message.content.startsWith(prefix + 'restart')) {
 	if(message.sender.id === config.owner_id){
 	bot.sendMessage(message, 'Restart issued by **' + message.author.name + '**\nRestarting...')
-=======
+
 				var key = "";
 				var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -401,19 +398,18 @@ fs.writeFile("./data/warns.json",JSON.stringify(warns))
 	if (message.content.startsWith(prefix + 'resume')) {
 		bot.sendMessage(message, "Resuming...")
 		bot.voiceConnection.resume();
->>>>>>> eb5899e42e412b344222bad74561999856fcb095
+
 	}
 
 	if (message.content.startsWith(prefix + 'restart')) {
 		if (message.sender.id === config.owner_id) {
 			bot.sendMessage(message, 'Restart issued by **' + message.author.name + '**\nRestarting...')
 		}
-<<<<<<< HEAD
+
 
 	if(message.content.startsWith(prefix + 'invite')){
 		bot.sendMessage(message, "My OAuth URL: "+`http://discordapp.com/oauth2/authorize?client_id=${config.client_id}&scope=bot`)
-=======
->>>>>>> eb5899e42e412b344222bad74561999856fcb095
+
 	}
 
 	if (message.content.startsWith(prefix + 'invite')) {
