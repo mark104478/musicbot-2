@@ -32,23 +32,23 @@ bot.on("message", function(message) {
 	if (message.content.startsWith(prefix + 'help')) {
 		bot.sendMessage(message, "Check your DM's **" + message.sender.name + "**")
 		bot.sendMessage(message.sender.id, `${rb}ruby
-	${prefix}help - Shows this message.
-	${prefix}ping - Ping/Pong with ms amount.
-	${prefix}servers Shows amount of servers.
-	${prefix}play - Plays the song you requested.
-	${prefix}voteskip - You may vote to skip a song.
-	${prefix}skip - Skips the playing song.
-	${prefix}pause - Pause the current song.
-	${prefix}eval - Owner only.
-	${prefix}say - Admin only.
-	${prefix}resume - Resumes paused song.
-	${prefix}restart - Restarts the bot (Owner only).
-	${prefix}shutdown - Power off the bot (Owner only).
-	${prefix}invite - Creates OAuth URL for bot.
-	${prefix}git - Sends link to github repo.
-	${prefix}warn <user> <reason> - Warns a user for the thing they did wrong.
-	${prefix}reminder <time>|<reminder> - Reminds you of something in a certain time
-	${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from blacklist${rb}`)
+		${prefix}help - Shows this message.
+		${prefix}ping - Ping/Pong with ms amount.
+		${prefix}servers Shows amount of servers.
+		${prefix}play - Plays the song you requested.
+		${prefix}voteskip - You may vote to skip a song.
+		${prefix}skip - Skips the playing song.
+		${prefix}pause - Pause the current song.
+		${prefix}eval - Owner only.
+		${prefix}say - Admin only.
+		${prefix}resume - Resumes paused song.
+		${prefix}restart - Restarts the bot (Owner only).
+		${prefix}shutdown - Power off the bot (Owner only).
+		${prefix}invite - Creates OAuth URL for bot.
+		${prefix}git - Sends link to github repo.
+		${prefix}warn <user> <reason> - Warns a user for the thing they did wrong.
+		${prefix}reminder <time>|<reminder> - Reminds you of something in a certain time
+		${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from blacklist${rb}`)
 	}
 	if (message.content.startsWith(prefix + 'servers')) {
 		bot.sendMessage(message, "I'm currently on **" + bot.servers.length + "** server(s)")
@@ -87,13 +87,15 @@ bot.on("message", function(message) {
 
 	if (message.content.startsWith(prefix + 'reminder')) {
 		try {
-			var c = message.content
-			var msg = c.split(" ").splice(1).join(" ").split("|")
-			var time = parseTime(msg[0])
-			var reminder = msg[1]
+			var c = message.content.substring(message.content.indexOf(' ') + 1, message.content.length);
+			var msg = c.split(" ").splice(1).join(" ").split("|");
+			msg[0] = msg[0].replace(/\s/g,'');
+			var time = parseTime(msg[0]);
+			var reminder = msg[1].trim();
+			message.reply("I will PM you a reminder to " + reminder + " in " + time + "!");
 			setTimeout(function() {
-				bot.sendMessage(message, message.sender + " Reminder: ```" + reminder + "```")
-			}, time.countdown)
+				message.author.sendMessage(message.author + " Reminder: " + reminder);
+			}, time.countdown);
 
 			function parseTime(str) {
 				var num, time;
@@ -148,7 +150,7 @@ bot.on("message", function(message) {
 				};
 			}
 		} catch (err) {
-			bot.sendMessage(message, "Is that really a number?")
+			message.channel.sendMessage("Invalid arguments.")
 		}
 	}
 
