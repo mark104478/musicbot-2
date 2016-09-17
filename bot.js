@@ -85,8 +85,9 @@ bot.on("message", function(message) {
 	}
 	if (message.content.startsWith(prefix + 'reminder')) {
 		try {
-			var c = message.content
-			var msg = c.split(" ").splice(1).join(" ").split("|")
+			var c = message.content.substring(message.content.indexOf(' ') + 1, message.content.length);
+			c = c.trim();
+			var msg = c.split(" ").splice(1).join(" ").split("|");
 			var time = parseTime(msg[0])
 			var reminder = msg[1]
 			setTimeout(function() {
