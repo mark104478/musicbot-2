@@ -16,59 +16,6 @@ bot.on('ready', function() {
 })
 
 bot.on("message", function(message) {
-<<<<<<< HEAD
-	if(message.sender.bot) return;
-	if(sbl.indexOf(message.channel.server.id) != -1 && message.content.startsWith(prefix)){ bot.sendMessage(message, "This server is blacklisted"); return;}
-if(message.content.startsWith(prefix + "ping")) {
-      bot.sendMessage(message, "Pong!", function(error, msg) {
-          if (!error) {
-              bot.updateMessage(msg, "Pong, **" + (msg.timestamp - message.timestamp) + "**ms");
-          }
-      });
-  }
-
-	if(message.content.startsWith(prefix + 'help')){
-		bot.sendMessage(message,"Check your DM's **"+message.sender.name+"**")
-		bot.sendMessage(message.sender.id,`${rb}ruby
-	${prefix}help - Shows this message.
-	${prefix}ping - Ping/Pong with ms amount.
-	${prefix}servers Shows amount of servers.
-	${prefix}play - Plays the song you requested.
-	${prefix}voteskip - You may vote to skip a song.
-	${prefix}skip - Skips the playing song.
-	${prefix}pause - Pause the current song.
-	${prefix}eval - Owner only.
-	${prefix}say - Admin only.
-	${prefix}resume - Resumes paused song.
-	${prefix}restart - Restarts the bot (Owner only).
-	${prefix}shutdown - Power off the bot (Owner only).
-	${prefix}invite - Creates OAuth URL for bot.
-	${prefix}git - Sends link to github repo.
-	${prefix}warn <user> <reason> - Warns a user for the thing they did wrong.
-	${prefix}reminder <time>|<reminder> - Reminds you of something in a certain time
-	${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from blacklist${rb}`)
-	}
-	if(message.content.startsWith(prefix + 'servers')) {
-	bot.sendMessage(message, "I'm currently on **" +bot.servers.length + "** server(s)")
-	}
-
-	if(message.content.startsWith(prefix + 'play')) {
-	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later."); //Should be done soon.
-	}
-	if(message.content.startsWith(prefix + "serverblacklist")){
-		if(message.sender.id = config.owner_id){
-		var c = message.content.split(" ").splice(1).join(" ")
-		var args = c.split(" ");
-		console.log("[DEBUG] Args: "+args)
-		if(args[0] === "remove"){
-			sbl.splice(sbl.indexOf(args[1]))
-			fs.writeFile("./data/blservers.json",JSON.stringify(sbl))
-		}else if(args[0] === "add"){
-			sbl.push(args[1])
-			fs.writeFile("./data/blservers.json",JSON.stringify(sbl))
-		}else{
-			bot.sendMessage(message, `You need to specify what to do! ${prefix}serverblacklist <add/remove> <server id>`)
-=======
 	if (message.sender.bot) return;
 	if (sbl.indexOf(message.channel.server.id) != -1 && message.content.startsWith(prefix)) {
 		bot.sendMessage(message, "This server is blacklisted");
