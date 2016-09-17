@@ -191,7 +191,7 @@ warns[caseid] = {
 	},
 	"reason":rsn
 }
-bot.sendMessage(message, usr + " was  warned for `"+rsn+"`, check logs for more info")
+bot.sendMessage(message, usr + " was warned for `"+rsn+"`, check logs for more info")
 fs.writeFile("./data/warns.json",JSON.stringify(warns))
 		}else{
 			bot.sendMessage(message,"You have to be able to kick/ban members to use this command")
