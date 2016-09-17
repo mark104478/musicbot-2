@@ -89,7 +89,7 @@ bot.on("message", function(message) {
 			var msg = c.split(" ").splice(1).join(" ").split("|");
 			msg[0] = msg[0].replace(/\s/g,'');
 			var time = parseTime(msg[0]);
-			var reminder = msg[1];
+			var reminder = msg[1].trim();
 			setTimeout(function() {
 				bot.sendMessage(message, message.sender + " Reminder: ```" + reminder + "```")
 			}, time.countdown)
