@@ -25,7 +25,7 @@ if(message.content.startsWith(prefix + "ping")) {
           }
       });
   }
-  
+
 	if(message.content.startsWith(prefix + 'help')){
 		bot.sendMessage(message,"Check your DM's **"+message.sender.name+"**")
 		bot.sendMessage(message.sender.id,`${rb}ruby
@@ -50,14 +50,15 @@ if(message.content.startsWith(prefix + "ping")) {
 	if(message.content.startsWith(prefix + 'servers')) {
 	bot.sendMessage(message, "I'm currently on **" +bot.servers.length + "** server(s)")
 	}
-	
-	if(message.content.startsWith(prefix + 'play')) {	
+
+	if(message.content.startsWith(prefix + 'play')) {
 	bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later."); //Should be done soon.
 	}
 	if(message.content.startsWith(prefix + "serverblacklist")){
 		if(message.sender.id = config.owner_id){
 		var c = message.content.split(" ").splice(1).join(" ")
 		var args = c.split(" ");
+		console.log("[DEBUG] Args: "+args)
 		if(args[0] === "remove"){
 			sbl.splice(sbl.indexOf(args[1]))
 			fs.writeFile("./data/blservers.json",JSON.stringify(sbl))
@@ -70,18 +71,18 @@ if(message.content.startsWith(prefix + "ping")) {
 		}else{
 			bot.sendMessage(message, "Sorry, this command is for the owner only.")
 		}
-		
+
 	}
 	if(message.content.startsWith(prefix + 'skip')) {
 	bot.sendMessage(message, 'Skipping song...');
 	bot.voiceConnetion.stopPlaying();
 	}
-	
+
 	if(message.content.startsWith(prefix + 'pause')) {
 	bot.sendMessage(message, "Pausing music...")
 	bot.voiceConnection.pause()
 	}
-	
+
 	if(message.content.startsWith(prefix + 'reminder')){
 		try{
 		var c = message.content
@@ -197,45 +198,45 @@ fs.writeFile("./data/warns.json",JSON.stringify(warns))
 			bot.sendMessage(message,"You have to be able to kick/ban members to use this command")
 		}
 	}
-	
+
 	if(message.content.startsWith(prefix + 'say')) {
 		if(message.sender.id === config.owner_id){
 		var say = message.content.split(" ").splice(1).join(" ");
 		bot.sendMessage(message, say);
 	}
 	}
-	
+
 	if(message.content.startsWith(prefix + 'eval')){
 		if(message.sender.id === config.owner_id){
 		try{
 			var code = message.content.split(" ").splice(1).join(" ")
-			
+
 			var result = eval(code)
-			
-			
+
+
 			bot.sendMessage(message,"```diff\n+ "+result+"```")
-		
+
 		}catch(err){
-			
+
 			bot.sendMessage(message,"```diff\n- "+err+"```")
 		}
 		}else{
 			bot.sendMessage(message, "Sorry, you do not have permissisons to use this command, **" +message.author.name + "**.")
-			
+
 		}
 	}
-	
+
 	 if(message.content.startsWith(prefix + 'resume')) {
 	bot.sendMessage(message, "Resuming...")
 	bot.voiceConnection.resume();
 	}
-	
+
 	if(message.content.startsWith(prefix + 'restart')) {
 	if(message.sender.id === config.owner_id){
 	bot.sendMessage(message, 'Restart issued by **' + message.author.name + '**\nRestarting...')
 	}
 		}
-				
+
 	if(message.content.startsWith(prefix + 'invite')){
 		bot.sendMessage(message, "My OAuth URL: "+`http://discordapp.com/oauth2/authorize?client_id=${config.client_id}&scope=bot`)
 	}
