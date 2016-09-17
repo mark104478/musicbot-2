@@ -3,7 +3,7 @@
 <br />
 A Discord music bot you may run yourself with minimal effort and time!
 
-This bot will require: **Node.js, Git, discord.js#indev-old, FFMPEG, Python 2.7 (optional)**, for more information on how to install the programs, please check the wiki.
+This bot will require: **Node.js, Git, discord.js#indev-old, FFMPEG, ytdl-core, Python 2.7 (optional)**, for more information on how to install the programs, please check the wiki.
 
 If you encounter any **bugs or issues** throughout the process of trying to get your bot running, then please **create an issue on the github**, and we'll check into it, as soon as we can. 
 
