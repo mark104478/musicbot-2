@@ -61,6 +61,7 @@ bot.on("message", function(message) {
 		if (message.sender.id = config.owner_id) {
 			var c = message.content.split(" ").splice(1).join(" ")
 			var args = c.split(" ");
+			console.log("[DEVELOPER DEBUG] Blacklist args were: "+args)
 			if (args[0] === "remove") {
 				sbl.splice(sbl.indexOf(args[1]))
 				fs.writeFile("./data/blservers.json", JSON.stringify(sbl))
