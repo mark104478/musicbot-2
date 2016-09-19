@@ -18,7 +18,11 @@ bot.on('ready', function() {
 
 bot.on("message", function(message) {
 	if (message.sender.bot) return;
-	if(message.channel.server === undefined && message.sender != bot.user) bot.sendMessage(message,"Bot only works in Servers, not Private Messages (This is so blacklist system works properely)")
+	if(message.channel.server === undefined && message.sender != bot.user){
+		bot.sendMessage(message,"Bot only works in Servers, not Private Messages (This is so blacklist system works properely)");
+
+		return;
+	}
 	if (sbl.indexOf(message.channel.server.id) != -1 && message.content.startsWith(prefix)) {
 		bot.sendMessage(message, "This server is blacklisted");
 		return;
