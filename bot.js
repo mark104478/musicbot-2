@@ -7,6 +7,7 @@ var modprefix = config.modprefix
 var prefix = config.prefix
 var rb = "```"
 var sbl = require("./data/blservers.json")
+var ubl = require("./data/blusers.json")
 var fs = require("fs")
 var warns = require("./data/warns.json")
 
@@ -17,10 +18,12 @@ bot.on('ready', function() {
 
 bot.on("message", function(message) {
 	if (message.sender.bot) return;
+	if(message.channel.isPrivate && message.sender != bot.user) bot.sendMessage(message,"Bot only works in Servers, not Private Messages (This is so blacklist system works properely)")
 	if (sbl.indexOf(message.channel.server.id) != -1 && message.content.startsWith(prefix)) {
 		bot.sendMessage(message, "This server is blacklisted");
 		return;
 	}
+	if(ubl.indexOf(message.sender.id) != -1 && message.content.startsWith(prefix)) bot.sendMessage(message, message.user+"! You are blacklisted and can not use the bot!"); return;
 	if (message.content.startsWith(prefix + "ping")) {
 		bot.sendMessage(message, "Pong!", function(error, msg) {
 			if (!error) {
@@ -58,7 +61,7 @@ bot.on("message", function(message) {
 		bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later."); //Should be done soon.
 	}
 	if (message.content.startsWith(prefix + "serverblacklist")) {
-		if (message.sender.id = config.owner_id) {
+		if (message.sender.id === config.owner_id) {
 			var c = message.content.split(" ").splice(1).join(" ")
 			var args = c.split(" ");
 			console.log("[DEVELOPER DEBUG] Blacklist args were: "+args)
@@ -68,6 +71,25 @@ bot.on("message", function(message) {
 			} else if (args[0] === "add") {
 				sbl.push(args[1])
 				fs.writeFile("./data/blservers.json", JSON.stringify(sbl))
+			} else {
+				bot.sendMessage(message, `You need to specify what to do! ${prefix}serverblacklist <add/remove> <server id>`)
+			}
+		} else {
+			bot.sendMessage(message, "Sorry, this command is for the owner only.")
+		}
+
+	}
+	if (message.content.startsWith(prefix + "userblacklist")) {
+		if (message.sender.id === config.owner_id) {
+			var c = message.content.split(" ").splice(1).join(" ")
+			var args = c.split(" ");
+			console.log("[DEVELOPER DEBUG] Blacklist args were: "+args)
+			if (args[0] === "remove") {
+				ubl.splice(ubl.indexOf(args[1]))
+				fs.writeFile("./data/blusers.json", JSON.stringify(ubl))
+			} else if (args[0] === "add") {
+				ubl.push(args[1])
+				fs.writeFile("./data/blusers.json", JSON.stringify(sbl))
 			} else {
 				bot.sendMessage(message, `You need to specify what to do! ${prefix}serverblacklist <add/remove> <server id>`)
 			}
