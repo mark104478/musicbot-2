@@ -23,7 +23,10 @@ bot.on("message", function(message) {
 		bot.sendMessage(message, "This server is blacklisted");
 		return;
 	}
-	if(ubl.indexOf(message.sender.id) != -1 && message.content.startsWith(prefix)) bot.sendMessage(message, message.user+"! You are blacklisted and can not use the bot!"); return;
+	if(ubl.indexOf(message.sender.id) != -1 && message.content.startsWith(prefix)){
+		bot.sendMessage(message, message.user+"! You are blacklisted and can not use the bot!");
+		return;
+	}
 	if (message.content.startsWith(prefix + "ping")) {
 		bot.sendMessage(message, "Pong!", function(error, msg) {
 			if (!error) {
