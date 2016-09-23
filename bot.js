@@ -17,7 +17,7 @@ var search = require('youtube-search');
 var opts = {
     part: 'snippet',
     maxResults: 10,
-    key: 'AIzaSyCfHcwdAW8jkocHXFuq7FY6ZkxJGvdA170'
+    key: 'youtube api key'
 };
 
 function getQueue(guild){
