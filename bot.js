@@ -11,6 +11,61 @@ var sbl = require("./data/blservers.json")
 var ubl = require("./data/blusers.json")
 var fs = require("fs")
 var warns = require("./data/warns.json")
+var queues = {};
+const ytdl = require('ytdl-core');
+var search = require('youtube-search');
+var opts = {
+    part: 'snippet',
+    maxResults: 10,
+    key: 'AIzaSyCfHcwdAW8jkocHXFuq7FY6ZkxJGvdA170'
+};
+
+function getQueue(guild){
+	if(!guild) return;
+	if(typeof guild == 'object') guild = guild.id;
+	if(queues[guild]) return queues[guild];
+	else queues[guild] = []; return queues[guild]
+}
+
+function play(msg, queue, song){
+	if(!msg || !queue) return;
+	if(song){
+		search(song, opts, function(err, results){
+			if(err) console.log(err)
+			song = (song.includes("https://" || "http://")) ? song : results[0].link;
+			console.log(results)
+            		console.log('wow')
+            		let stream = ytdl(song, {audioonly: true});
+            		console.log('test')
+            		var test
+            		if(queue.length === 0) test = true;
+        		 queue.push({"title": results[0].title, "requested": msg.author.username, "toplay": stream});
+            		bot.sendMessage(msg, "Queued **" + queue[queue.length - 1].title + "**");
+            		if(test){
+        		   	setTimeout(function(){
+        		      		play(msg, queue);
+        			}, 1000);
+            		}
+		});
+	}else if(queue.length != 0){
+		bot.sendMessage(msg, `Now Playing **${queue[0].name}**|by ***${queue[0].requested}***`);
+		var connection = bot.voiceConnections.get('server', msg.server);
+		if(!connection) return;
+		connection.playRawStream(queue[0].toplay).then(intent => {
+			intent.on('error', () => {
+				queue.shift();
+				play(msg, queue);
+			});
+			
+			intent.on('end', () => {
+				queue.shift();
+				play(msg, queue);
+			});
+		});
+	}else{
+		bot.sendMessage(msg, 'No more music in queue');
+	}
+}
 
 bot.on('ready', function() {
 	bot.setStatus('online', config.status)
@@ -66,7 +121,14 @@ bot.on("message", function(message) {
 	}
 
 	if (message.content.startsWith(prefix + 'play')) {
-		bot.sendMessage(message, "The creator of this GitHub hasn't had time to get this code done try again, later."); //Should be done soon.
+		if(!bot.voiceConnections.get('server', message.server)){
+			if(!message.author.voiceChannel) return bot.sendMessage(message, 'You need to be in a voice channel');
+			bot.joinVoiceChannel(message.author.voiceChannel);
+		}
+		let suffix = message.content.split(" ").slice(1).join(" ");
+		if(!suffix) return bot.sendMessage(message, 'You need to a song link or a song name');
+		console.log(suffix)
+		play(message, getQueue(message.server.id), suffix);
 	}
 	if (message.content.startsWith(prefix + "serverblacklist")) {
 		if (message.sender.id === config.owner_id) {
