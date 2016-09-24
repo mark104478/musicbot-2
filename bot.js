@@ -33,10 +33,7 @@ function play(msg, queue, song){
 		search(song, opts, function(err, results){
 			if(err) console.log(err)
 			song = (song.includes("https://" || "http://")) ? song : results[0].link;
-			console.log(results)
-            		console.log('wow')
             		let stream = ytdl(song, {audioonly: true});
-            		console.log('test')
             		var test
             		if(queue.length === 0) test = true;
         		 queue.push({"title": results[0].title, "requested": msg.author.username, "toplay": stream});
@@ -48,7 +45,7 @@ function play(msg, queue, song){
             		}
 		});
 	}else if(queue.length != 0){
-		bot.sendMessage(msg, `Now Playing **${queue[0].name}**|by ***${queue[0].requested}***`);
+		bot.sendMessage(msg, `Now Playing **${queue[0].title}**|by ***${queue[0].requested}***`);
 		var connection = bot.voiceConnections.get('server', msg.server);
 		if(!connection) return;
 		connection.playRawStream(queue[0].toplay).then(intent => {
@@ -127,7 +124,6 @@ bot.on("message", function(message) {
 		}
 		let suffix = message.content.split(" ").slice(1).join(" ");
 		if(!suffix) return bot.sendMessage(message, 'You need to a song link or a song name');
-		console.log(suffix)
 		play(message, getQueue(message.server.id), suffix);
 	}
 	if (message.content.startsWith(prefix + "serverblacklist")) {
