@@ -36,7 +36,7 @@ function play(msg, queue, song) {
       let stream = ytdl(song, {
         audioonly: true
       })
-      var test
+      let test
       if (queue.length === 0) test = true
       queue.push({
         "title": results[0].title,
@@ -52,7 +52,7 @@ function play(msg, queue, song) {
     })
   } else if (queue.length != 0) {
     bot.sendMessage(msg, `Now Playing **${queue[0].title}**|by ***${queue[0].requested}***`)
-    var connection = bot.voiceConnections.get('server', msg.server)
+    let connection = bot.voiceConnections.get('server', msg.server)
     if (!connection) return
     connection.playRawStream(queue[0].toplay).then(intent => {
       intent.on('error', () => {
@@ -136,8 +136,8 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
   }
   if (message.content.startsWith(prefix + "serverblacklist")) {
     if (message.sender.id === config.owner_id) {
-      var c = message.content.split(" ").splice(1).join(" ")
-      var args = c.split(" ")
+      let c = message.content.split(" ").splice(1).join(" ")
+      let args = c.split(" ")
       console.log("[DEVELOPER DEBUG] Blacklist args were: " + args)
       if (args[0] === "remove") {
         sbl.splice(sbl.indexOf(args[1]))
@@ -155,8 +155,8 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
   }
   if (message.content.startsWith(prefix + "userblacklist")) {
     if (message.sender.id === config.owner_id) {
-      var c = message.content.split(" ").splice(1).join(" ")
-      var args = c.split(" ")
+      let c = message.content.split(" ").splice(1).join(" ")
+      let args = c.split(" ")
       console.log("[DEVELOPER DEBUG] Blacklist args were: " + args)
       if (args[0] === "remove") {
         ubl.splice(ubl.indexOf(args[1]))
@@ -184,23 +184,23 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
 
   if (message.content.startsWith(prefix + 'reminder')) {
     try {
-      var c = message.content.substring(message.content.indexOf(' ') + 1, message.content.length)
-      var msg = c.split(" ").splice(1).join(" ").split("|")
+      let c = message.content.substring(message.content.indexOf(' ') + 1, message.content.length)
+      let msg = c.split(" ").splice(1).join(" ").split("|")
       msg[0] = msg[0].replace(/\s/g, '')
-      var time = parseTime(msg[0])
-      var reminder = msg[1].trim()
+      let time = parseTime(msg[0])
+      let reminder = msg[1].trim()
       message.reply("I will PM you a reminder to " + reminder + " in " + time + "!")
       setTimeout(function() {
         message.author.sendMessage(message.author + " Reminder: " + reminder)
       }, time.countdown)
 
       function parseTime(str) {
-        var num, time
+        let num, time
         if (str.indexOf(" ") > -1) {
           num = str.substring(0, str.indexOf(" "))
           time = str.substring(str.indexOf(" ") + 1).toLowerCase()
         } else {
-          for (var i = 0; i < str.length; i++) {
+          for (let i = 0; i < str.length; i++) {
             if (str.substring(0, i) && !isNaN(str.substring(0, i)) && isNaN(str.substring(0, i + 1))) {
               num = str.substring(0, i)
               time = str.substring(i)
@@ -211,7 +211,7 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
         if (!num || isNaN(num) || num < 1 || !time || ["d", "day", "days", "h", "hr", "hrs", "hour", "hours", "m", "min", "mins", "minute", "minutes", "s", "sec", "secs", "second", "seconds"].indexOf(time) == -1) {
           return
         }
-        var countdown = 0
+        let countdown = 0
         switch (time) {
           case "d":
           case "day":
@@ -264,16 +264,16 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
   }
   if (message.content.startsWith(prefix + 'warn')) {
     if (message.channel.permissionsOf(message.sender).hasPermission("kickMembers") || message.channel.permissionsOf(message.sender).hasPermission("banMembers")) {
-      var c = message.content
-      var usr = message.mentions[0]
-      var rsn = c.split(" ").splice(1).join(" ").replace(usr, "").replace("<@!" + usr.id + ">", "")
-      var caseid = genToken(20)
+      let c = message.content
+      let usr = message.mentions[0]
+      let rsn = c.split(" ").splice(1).join(" ").replace(usr, "").replace("<@!" + usr.id + ">", "")
+      let caseid = genToken(20)
 
       function genToken(length) {
-        var key = ""
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+        let key = ""
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
-        for (var i = 0; i < length; i++) {
+        for (let i = 0; i < length; i++) {
           key += possible.charAt(Math.floor(Math.random() * possible.length))
         }
 
@@ -308,7 +308,7 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
 
   if (message.content.startsWith(prefix + 'say')) {
     if (message.sender.id === config.owner_id) {
-      var say = message.content.split(" ").splice(1).join(" ")
+      let say = message.content.split(" ").splice(1).join(" ")
       bot.sendMessage(message, say)
     }
   }
@@ -316,9 +316,9 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
   if (message.content.startsWith(prefix + 'eval')) {
     if (message.sender.id === config.owner_id) {
       try {
-        var code = message.content.split(" ").splice(1).join(" ")
+        let code = message.content.split(" ").splice(1).join(" ")
 
-        var result = eval(code)
+        let result = eval(code)
 
 
         bot.sendMessage(message, "```diff\n+ " + result + "```")
