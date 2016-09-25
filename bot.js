@@ -339,6 +339,21 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
 
     }
   }
+  
+  if (message.content.startsWith(prefix + 'volume')) {
+    let suffix = message.content.split(" ")[1];
+    let player = bot.voiceConnections.get('server', message.server);
+    if(!player || !player.playing) return bot.sendMessage(message, 'No, music is playing at this time.');
+    if(!suffix) {
+        bot.sendMessage(message, `The current volume is ${(player.getVolume() * 50)}`);
+    }else{
+        let volumeBefore = player.getVolume();
+        let volume = parseInt(suffix);
+        if(volume > 50) return bot.sendMessage(message, "The music can't be higher then 50");
+        player.setVolume((volume / 50));
+        bot.sendMessage(message, `Volume changed from ${(volumeBefore * 50)} to ${volume}`);
+    }
+}
 
 if (message.content.startsWith(prefix + 'resume')) {
     let player = bot.voiceConnections.get('server', message.server);
