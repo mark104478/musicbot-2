@@ -359,7 +359,7 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
     if(!queue) return bot.sendMessage(message, "No music in queue");
     let text = '';
     for(let i = 0; i < queue.length; i++){
-      text += `${(i + 1)}. ${queue[i].title}|by ${queue[i].requested}\n`
+      text += `${(i + 1)}. ${queue[i].title} | by ${queue[i].requested}\n`
     };
     bot.sendMessage(message, `${rb}xl\n${text}${rb}`);
   }
