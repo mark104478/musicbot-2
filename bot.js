@@ -188,7 +188,7 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
      }
      bot.sendMessage(message, `Cleared the queue`)
     }else{
-      bot.sendMessage(message, 'you are not admin');
+      bot.sendMessage(message, 'Just the admins can do this command');
     }
 }
   
