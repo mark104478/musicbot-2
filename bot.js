@@ -51,7 +51,7 @@ function play(msg, queue, song) {
       }
     })
   } else if (queue.length != 0) {
-    bot.sendMessage(msg, `Now Playing **${queue[0].title}**|by ***${queue[0].requested}***`)
+    bot.sendMessage(msg, `Now Playing **${queue[0].title}** | by ***${queue[0].requested}***`)
     let connection = bot.voiceConnections.get('server', msg.server)
     if (!connection) return
     connection.playRawStream(queue[0].toplay).then(intent => {
