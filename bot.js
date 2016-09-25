@@ -430,11 +430,15 @@ if (message.content.startsWith(prefix + 'warn')) {
 }
 
 if (message.content.startsWith(prefix + 'resume')) {
-    let player = bot.voiceConnections.get('server', message.server);
-    if(!player) return bot.sendMessage(message, 'No, music is playing at this time.');
-    if( player.playing) return bot.sendMessage(message, 'The music is already playing');
-    player.resume();
-    bot.sendMessage(message, "Resuming music...");
+    if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1){
+      let player = bot.voiceConnections.get('server', message.server);
+      if(!player) return bot.sendMessage(message, 'No, music is playing at this time.');
+      if( player.playing) return bot.sendMessage(message, 'The music is already playing');
+      player.resume();
+      bot.sendMessage(message, "Resuming music...");
+    }else{
+      bot.sendMessage(message, 'Just the adminds can do this command');
+    }
 }
 
   if (message.content.startsWith(prefix + 'restart')) {
