@@ -12,7 +12,7 @@ This license is granted perpetually, as long as you do not materially breach it.
 Binary Restricted: Licensee may sublicense Software as a part of a larger work containing more than Software, distributed solely in Object or Binary form under a personal, non-sublicensable, limited license. Such redistribution shall be limited to unlimited codebases.
 Non Assignable & Non-Transferable: Licensee may not assign or transfer his rights and duties under this license.
 Non-Commercial: Licensee may not use Software for commercial purposes. for the purpose of this license, commercial purposes means that a 3rd party has to pay in order to access Software or that the Website that runs Software is behind a paywall.
-With Attribution Requirements﻿: This code was created by Joseph and developerCodex
+With Attribution Requirements﻿: This code was created by Joseph, ZelAk312 and developerCodex
 Term & Termination: The Term of this license shall be until terminated. Licensor may terminate this Agreement, including Licensee’s license in the case where Licensee :
 became insolvent or otherwise entered into any liquidation process; or
 exported The Software to any jurisdiction where licensor may not enforce his rights under this agreements in; or
