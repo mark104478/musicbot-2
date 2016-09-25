@@ -368,13 +368,6 @@ if (message.content.startsWith(prefix + 'resume')) {
       bot.sendMessage(message, 'Restart issued by **' + message.author.name + '**\nRestarting...')
     }
   }
-  
-   if (message.content.startsWith(prefix + 'shutdown')) {
-    if (message.sender.id === config.owner_id) {
-      bot.sendMessage(message, 'Shutdown issued by **' + message.author.name + '**\nShutting down...')
-      setTimeout(function(){throw(message.sender.name+" issued a shutdown")},3000)
-    }
-  }
 
   if (message.content.startsWith(prefix + 'invite')) {
     bot.sendMessage(message, "My OAuth URL: " + `http://discordapp.com/oauth2/authorize?client_id=${config.client_id}&scope=bot`)
