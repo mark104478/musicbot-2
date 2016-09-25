@@ -106,6 +106,9 @@ ${prefix}ping - Ping/Pong with ms amount.
 ${prefix}servers Shows amount of servers.
 ${prefix}play - Plays the song you requested.
 ${prefix}voteskip - You may vote to skip a song.
+${prefix}volume <volume> - Change the volume.
+${prefix}queue - Check the list of songs that are queued.
+${prefix}np/nowplaying - Check the current song out.
 ${prefix}skip - Skips the playing song.
 ${prefix}pause - Pause the current song.
 ${prefix}eval - Owner only.
