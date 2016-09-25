@@ -141,7 +141,7 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
     play(message, getQueue(message.server.id), suffix)
   }
   if (message.content.startsWith(prefix + "serverblacklist")) {
-    if (message.sender.id === config.owner_id) {
+    if (message.sender.id === config.owner_id || config.admins.indexOf(msg.author.id)!= -1) {
       let c = message.content.split(" ").splice(1).join(" ")
       let args = c.split(" ")
       console.log("[DEVELOPER DEBUG] Blacklist args were: " + args)
@@ -160,7 +160,7 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
 
   }
   if (message.content.startsWith(prefix + "userblacklist")) {
-    if (message.sender.id === config.owner_id) {
+    if (message.sender.id === config.owner_id || config.admins.indexOf(msg.author.id)!= -1) {
       let c = message.content.split(" ").splice(1).join(" ")
       let args = c.split(" ")
       console.log("[DEVELOPER DEBUG] Blacklist args were: " + args)
@@ -312,7 +312,7 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
   }
 
   if (message.content.startsWith(prefix + 'shutdown')) {
-    if (message.sender.id === config.owner_id) {
+    if (message.sender.id === config.owner_id || config.admins.indexOf(msg.author.id)!= -1) {
       bot.sendMessage(message, "Shutdown has been **initiated**.\nShutting down...")
       setTimeout(function() {
         bot.logout()
@@ -369,14 +369,14 @@ if (message.content.startsWith(prefix + 'warn')) {
   }
 
   if (message.content.startsWith(prefix + 'say')) {
-    if (message.sender.id === config.owner_id) {
+    if (message.sender.id === config.owner_id || config.admins.indexOf(msg.author.id)!= -1) {
       let say = message.content.split(" ").splice(1).join(" ")
       bot.sendMessage(message, say)
     }
   }
 
   if (message.content.startsWith(prefix + 'eval')) {
-    if (message.sender.id === config.owner_id) {
+    if (message.sender.id === config.owner_id || config.admins.indexOf(msg.author.id)!= -1) {
       try {
         let code = message.content.split(" ").splice(1).join(" ")
 
@@ -419,7 +419,7 @@ if (message.content.startsWith(prefix + 'resume')) {
 }
 
   if (message.content.startsWith(prefix + 'restart')) {
-    if (message.sender.id === config.owner_id) {
+    if (message.sender.id === config.owner_id || config.admins.indexOf(msg.author.id)!= -1) {
       bot.sendMessage(message, 'Restart issued by **' + message.author.name + '**\nRestarting...')
     }
   }
