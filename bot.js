@@ -354,6 +354,13 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
   if (message.content.startsWith(prefix + 'git')) {
     bot.sendMessage(message, "GitHub URL: **https://github.com/developerCodex/musicbot**")
   }
+  
+  if (message.content.startsWith(prefix + 'np') || message.content.startsWith(prefix + 'nowplaying')) {
+    let queue = getQueue(message.server.id);
+    if(queue.length == 0) return bot.sendMessage(message, "No music in queue");
+    bot.sendMessage(message, `${rb}xl\nCurrently playing: ${queue[0].title}| by ${queue[0].requested}${rb}`);
+}
+  
 if (message.content.startsWith(prefix + 'queue')) {
     let queue = getQueue(message.server.id);
     if(queue.length == 0) return bot.sendMessage(message, "No music in queue");
