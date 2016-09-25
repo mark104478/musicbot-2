@@ -141,7 +141,7 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
     play(message, getQueue(message.server.id), suffix)
   }
   if (message.content.startsWith(prefix + "serverblacklist")) {
-    if (message.sender.id === config.owner_id) {
+    if (message.sender.id === config.owner_id || config.admins.indexOf(msg.author.id)!= -1) {
       let c = message.content.split(" ").splice(1).join(" ")
       let args = c.split(" ")
       console.log("[DEVELOPER DEBUG] Blacklist args were: " + args)
@@ -160,7 +160,7 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
 
   }
   if (message.content.startsWith(prefix + "userblacklist")) {
-    if (message.sender.id === config.owner_id) {
+    if (message.sender.id === config.owner_id || config.admins.indexOf(msg.author.id)!= -1) {
       let c = message.content.split(" ").splice(1).join(" ")
       let args = c.split(" ")
       console.log("[DEVELOPER DEBUG] Blacklist args were: " + args)
@@ -180,41 +180,53 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
   }
   
   if(message.content.startsWith(prefix + "clearqueue")){
+    if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1){
      let queue = getQueue(msg.server.id);
      if(queue.length == 0) return bot.sendMessage(message, `No music in queue`);
      for(var i = queue.length - 1;  i >= 0; i--){
             queue.splice(i, 1);
      }
      bot.sendMessage(message, `Cleared the queue`)
+    }else{
+      bot.sendMessage(message, 'you are not admin');
+    }
 }
   
   if(message.content.startsWith(prefix + "lookupwarn")){
-    let user = message.mentions[0];
-    if(!user) return bot.sendMessage(message, "You need to mention the user");
-    let list = Object.keys(warns);
-    let found = '';
-    let foundCounter = 0;
-    let warnCase;
-    //looking for the case id
-    for(let i = 0; i < list.length; i++){
-        if(warns[list[i]].user.id == user.id){
-            foundCounter++;
-            found += `${(foundCounter)}. Username: ${warns[list[i]].user.name}\nAdmin: ${warns[list[i]].admin.name}\nServer: ${warns[list[i]].server.name}\nReason: ${warns[list[i]].reason}\n`;
-        }
+    if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1){
+      let user = message.mentions[0];
+      if(!user) return bot.sendMessage(message, "You need to mention the user");
+      let list = Object.keys(warns);
+      let found = '';
+      let foundCounter = 0;
+      let warnCase;
+      //looking for the case id
+      for(let i = 0; i < list.length; i++){
+          if(warns[list[i]].user.id == user.id){
+              foundCounter++;
+              found += `${(foundCounter)}. Username: ${warns[list[i]].user.name}\nAdmin: ${warns[list[i]].admin.name}\nServer: ${warns[list[i]].server.name}\nReason: ${warns[list[i]].reason}\n`;
+          }
+      }
+      if(foundCounter == 0) return bot.sendMessage(message, 'Nothing found for this user');
+      bot.sendMessage(message, `Found ${foundCounter} warns\n ${found}`);
+    }else{
+      bot.sendMessage(message, 'Just the admins can do this command');
     }
-    if(foundCounter == 0) return bot.sendMessage(message, 'Nothing found for this user');
-    bot.sendMessage(message, `Found ${foundCounter} warns\n ${found}`);
 }
   
   if (message.content.startsWith(prefix + 'skip')) {
-    let player = bot.voiceConnections.get('server', message.server);
-    if(!player || !player.playing) return bot.sendMessage(message, 'The bot is not playing');
-    player.stopPlaying()
-    bot.sendMessage(message, 'Skipping song...');
+    if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1){
+      let player = bot.voiceConnections.get('server', message.server);
+      if(!player || !player.playing) return bot.sendMessage(message, 'The bot is not playing');
+      player.stopPlaying()
+      bot.sendMessage(message, 'Skipping song...');
+    }else{
+      bot.sendMessage(message, 'Just the admins can do this command');
+    }
   }
   
   if(message.content.startsWith(prefix + "deletewarn")){
-    if (message.channel.permissionsOf(message.sender).hasPermission("kickMembers") || message.channel.permissionsOf(message.sender).hasPermission("banMembers")) {
+    if (message.channel.permissionsOf(message.sender).hasPermission("kickMembers") || message.channel.permissionsOf(message.sender).hasPermission("banMembers") || message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1) {
         let user = message.mentions[0];
         if(!user) return bot.sendMessage(message, "You need to mention the user");
         let list = Object.keys(warns);
@@ -236,10 +248,14 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
 }
 
   if (message.content.startsWith(prefix + 'pause')) {
-    let player = bot.voiceConnections.get('server', message.server);
-    if(!player || !player.playing) return bot.sendMessage(message, 'The bot is not playing');
-    player.pause();
-    bot.sendMessage(message, "Pausing music...");
+    if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1){
+      let player = bot.voiceConnections.get('server', message.server);
+      if(!player || !player.playing) return bot.sendMessage(message, 'The bot is not playing');
+      player.pause();
+      bot.sendMessage(message, "Pausing music...");
+    }else{
+      bot.sendMessage(message, 'Just the admins can use this command');
+    }
   }
 
   if (message.content.startsWith(prefix + 'reminder')) {
@@ -312,7 +328,7 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
   }
 
   if (message.content.startsWith(prefix + 'shutdown')) {
-    if (message.sender.id === config.owner_id) {
+    if (message.sender.id === config.owner_id || config.admins.indexOf(msg.author.id)!= -1) {
       bot.sendMessage(message, "Shutdown has been **initiated**.\nShutting down...")
       setTimeout(function() {
         bot.logout()
@@ -369,7 +385,7 @@ if (message.content.startsWith(prefix + 'warn')) {
   }
 
   if (message.content.startsWith(prefix + 'say')) {
-    if (message.sender.id === config.owner_id) {
+    if (message.sender.id === config.owner_id || config.admins.indexOf(msg.author.id)!= -1) {
       let say = message.content.split(" ").splice(1).join(" ")
       bot.sendMessage(message, say)
     }
@@ -396,30 +412,37 @@ if (message.content.startsWith(prefix + 'warn')) {
   }
   
   if (message.content.startsWith(prefix + 'volume')) {
+    
     let suffix = message.content.split(" ")[1];
     let player = bot.voiceConnections.get('server', message.server);
     if(!player || !player.playing) return bot.sendMessage(message, 'No, music is playing at this time.');
     if(!suffix) {
         bot.sendMessage(message, `The current volume is ${(player.getVolume() * 50)}`);
-    }else{
+    }else if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1){
         let volumeBefore = player.getVolume();
         let volume = parseInt(suffix);
         if(volume > 50) return bot.sendMessage(message, "The music can't be higher then 50");
         player.setVolume((volume / 50));
         bot.sendMessage(message, `Volume changed from ${(volumeBefore * 50)} to ${volume}`);
+    }else{
+      bot.sendMessage(message, 'Just the admins can change the volume');
     }
 }
 
 if (message.content.startsWith(prefix + 'resume')) {
-    let player = bot.voiceConnections.get('server', message.server);
-    if(!player) return bot.sendMessage(message, 'No, music is playing at this time.');
-    if( player.playing) return bot.sendMessage(message, 'The music is already playing');
-    player.resume();
-    bot.sendMessage(message, "Resuming music...");
+    if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1){
+      let player = bot.voiceConnections.get('server', message.server);
+      if(!player) return bot.sendMessage(message, 'No, music is playing at this time.');
+      if( player.playing) return bot.sendMessage(message, 'The music is already playing');
+      player.resume();
+      bot.sendMessage(message, "Resuming music...");
+    }else{
+      bot.sendMessage(message, 'Just the adminds can do this command');
+    }
 }
 
   if (message.content.startsWith(prefix + 'restart')) {
-    if (message.sender.id === config.owner_id) {
+    if (message.sender.id === config.owner_id || config.admins.indexOf(msg.author.id)!= -1) {
       bot.sendMessage(message, 'Restart issued by **' + message.author.name + '**\nRestarting...')
     }
   }
