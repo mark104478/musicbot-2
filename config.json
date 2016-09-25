@@ -4,5 +4,6 @@
   "prefix": "[PREFIX]",
   "owner_id": "[OWNER ID]",
   "status": "[STATUS]",
-  "youtube_api_key": "[YOUTUBE API KEY]"
+  "youtube_api_key": "[YOUTUBE API KEY]",
+  "admins": ["Idhere", "Idhere"]
 }
