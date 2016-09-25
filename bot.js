@@ -111,6 +111,8 @@ ${prefix}queue - Check the list of songs that are queued.
 ${prefix}np/nowplaying - Check the current song out.
 ${prefix}skip - Skips the playing song.
 ${prefix}pause - Pause the current song.
+${prefix}deletewarn <user> - Deletes a warning from a user.
+${prefix}lookupwarn <user> - Lookup warning information on a user.
 ${prefix}eval - Owner only.
 ${prefix}clearqueue - Clears the list of queues.
 ${prefix}say - Admin only.
@@ -186,12 +188,52 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
      bot.sendMessage(message, `Cleared the queue`)
 }
   
+  if(message.content.startsWith(prefix + "lookupwarn")){
+    let user = message.mentions[0];
+    if(!user) return bot.sendMessage(message, "You need to mention the user");
+    let list = Object.keys(warns);
+    let found = '';
+    let foundCounter = 0;
+    let warnCase;
+    //looking for the case id
+    for(let i = 0; i < list.length; i++){
+        if(warns[list[i]].user.id == user.id){
+            foundCounter++;
+            found += `${(foundCounter)}. Username: ${warns[list[i]].user.name}\nAdmin: ${warns[list[i]].admin.name}\nServer: ${warns[list[i]].server.name}\nReason: ${warns[list[i]].reason}\n`;
+        }
+    }
+    if(foundCounter == 0) return bot.sendMessage(message, 'Nothing found for this user');
+    bot.sendMessage(message, `Found ${foundCounter} warns\n ${found}`);
+}
+  
   if (message.content.startsWith(prefix + 'skip')) {
     let player = bot.voiceConnections.get('server', message.server);
     if(!player || !player.playing) return bot.sendMessage(message, 'The bot is not playing');
     player.stopPlaying()
     bot.sendMessage(message, 'Skipping song...');
   }
+  
+  if(message.content.startsWith(prefix + "deletewarn")){
+    if (message.channel.permissionsOf(message.sender).hasPermission("kickMembers") || message.channel.permissionsOf(message.sender).hasPermission("banMembers")) {
+        let user = message.mentions[0];
+        if(!user) return bot.sendMessage(message, "You need to mention the user");
+        let list = Object.keys(warns);
+        let found;
+        //looking for the case id
+        for(let i = 0; i < list.length; i++){
+            if(warns[list[i]].user.id == user.id){
+                found = list[i];
+                break;
+            }
+        }
+        if(!found) return bot.sendMessage(message, 'Nothing found for this user');
+        bot.sendMessage(message, `Delete the case of ${warns[found].user.name}\nReason: ${warns[found].reason}`);
+        delete warns[found];
+        fs.writeFile("./data/warns.json", JSON.stringify(warns))
+    }else{
+        bot.sendMessage(message, "You have to be able to kick/ban members to use this command")
+    }
+}
 
   if (message.content.startsWith(prefix + 'pause')) {
     let player = bot.voiceConnections.get('server', message.server);
@@ -280,10 +322,12 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
       }, 2000)
     }
   }
-  if (message.content.startsWith(prefix + 'warn')) {
+  
+if (message.content.startsWith(prefix + 'warn')) {
     if (message.channel.permissionsOf(message.sender).hasPermission("kickMembers") || message.channel.permissionsOf(message.sender).hasPermission("banMembers")) {
       let c = message.content
       let usr = message.mentions[0]
+      if(!usr) return bot.sendMessage(message, "You need to mention the user");
       let rsn = c.split(" ").splice(1).join(" ").replace(usr, "").replace("<@!" + usr.id + ">", "")
       let caseid = genToken(20)
 
