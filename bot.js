@@ -337,10 +337,13 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
     }
   }
 
-  if (message.content.startsWith(prefix + 'resume')) {
-    bot.sendMessage(message, "Resuming...")
-    bot.voiceConnection.resume()
-  }
+if (message.content.startsWith(prefix + 'resume')) {
+    let player = bot.voiceConnections.get('server', message.server);
+    if(!player) return bot.sendMessage(message, 'No, music is playing at this time.');
+    if( player.playing) return bot.sendMessage(message, 'The music is already playing');
+    player.resume();
+    bot.sendMessage(message, "Resuming music...");
+}
 
   if (message.content.startsWith(prefix + 'restart')) {
     if (message.sender.id === config.owner_id) {
