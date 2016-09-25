@@ -26,8 +26,7 @@
   "homepage": "https://github.com/developerCodex/musicbot#readme",
   "dependencies": {
     "discord.js": "hydrabolt/discord.js#indev-old",
-    "ffmpeg": "0.0.4",
-    "request": "^2.74.0",
+    "youtube-search": "^1.0.6",
     "ytdl-core": "^0.7.17"
   }
 }
