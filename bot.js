@@ -23,7 +23,7 @@ function play(msg, queue, song) {
   if (!msg || !queue) return
   if (song) {
     search(song, opts, function(err, results) {
-      if (err) return bot.sendMessage(msg, "Video not found please try to use a youtube video");
+      if (err) return bot.sendMessage(msg, "Video not found please try to use a youtube video.");
       song = (song.includes("https://" || "http://")) ? song : results[0].link
       let stream = ytdl(song, {
         audioonly: true
