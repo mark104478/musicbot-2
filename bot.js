@@ -173,13 +173,17 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
 
   }
   if (message.content.startsWith(prefix + 'skip')) {
-    bot.sendMessage(message, 'Skipping song...')
-    bot.voiceConnetion.stopPlaying()
+    let player = bot.voiceConnections.get('server', message.server);
+    if(!player || !player.playing) return bot.sendMessage(message, 'The bot is not playing');
+    player.stopPlaying()
+    bot.sendMessage(message, 'Skipping song...');
   }
 
   if (message.content.startsWith(prefix + 'pause')) {
-    bot.sendMessage(message, "Pausing music...")
-    bot.voiceConnection.pause()
+    let player = bot.voiceConnections.get('server', message.server);
+    if(!player || !player.playing) return bot.sendMessage(message, 'The bot is not playing');
+    player.pause();
+    bot.sendMessage(message, "Pausing music...");
   }
 
   if (message.content.startsWith(prefix + 'reminder')) {
@@ -349,6 +353,15 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
   }
   if (message.content.startsWith(prefix + 'git')) {
     bot.sendMessage(message, "GitHub URL: **https://github.com/developerCodex/musicbot**")
+  }
+  if (message.content.startsWith(prefix + 'queue')) {
+    let queue = getQueue(message.server.id);
+    if(!queue) return bot.sendMessage(message, "No music in queue");
+    let text = '';
+    for(let i = 0; i < queue.length; i++){
+      text += `${(i + 1)}. ${queue[i].title}|by ${queue[i].requested}\n`
+    };
+    bot.sendMessage(message, `${rb}xl\n${text}${rb}`);
   }
 })
 
