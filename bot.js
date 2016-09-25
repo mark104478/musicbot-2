@@ -19,6 +19,14 @@ const opts = {
   key: config.youtube_api_key
 }
 
+function getQueue(guild) {
+  if (!guild) return
+  if (typeof guild == 'object') guild = guild.id
+  if (queues[guild]) return queues[guild]
+  else queues[guild] = []
+  return queues[guild]
+}
+
 function play(msg, queue, song) {
   if (!msg || !queue) return
   if (song) {
