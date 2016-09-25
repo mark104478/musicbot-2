@@ -112,6 +112,7 @@ ${prefix}np/nowplaying - Check the current song out.
 ${prefix}skip - Skips the playing song.
 ${prefix}pause - Pause the current song.
 ${prefix}eval - Owner only.
+${prefix}clearqueue - Clears the list of queues.
 ${prefix}say - Admin only.
 ${prefix}resume - Resumes paused song.
 ${prefix}restart - Restarts the bot (Owner only).
@@ -175,6 +176,16 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
     }
 
   }
+  
+  if(message.content.startsWith(prefix + "clearqueue")){
+     let queue = getQueue(msg.server.id);
+     if(queue.length == 0) return bot.sendMessage(message, `No music in queue`);
+     for(var i = queue.length - 1;  i >= 0; i--){
+            queue.splice(i, 1);
+     }
+     bot.sendMessage(message, `Cleared the queue`)
+}
+  
   if (message.content.startsWith(prefix + 'skip')) {
     let player = bot.voiceConnections.get('server', message.server);
     if(!player || !player.playing) return bot.sendMessage(message, 'The bot is not playing');
