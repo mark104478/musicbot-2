@@ -1,6 +1,7 @@
 // Don't mess with this file it will ruin your bot, to change stuff edit config.json
 // PS: This bot is not completed, it may error or not have correct permissions.
 // PPS: LELE
+try{
 const Discord = require("discord.js")
 const config = require('./config.json')
 const bot = new Discord.Client()
@@ -474,3 +475,6 @@ if (message.content.startsWith(prefix + 'queue')) {
 bot.loginWithToken(config.token)
 // This version of discord.js is V8, you may install it using npm install discord.js#indev-old
 // Don't mess with this file it will ruin your bot, to change stuff edit config.json
+}catch(err){
+  console.log("WELL LADS LOOKS LIKE SOMETHING WENT WRONG! Visit MusicBot server for support (https://discord.gg/UbwFDM6) and quote this error:\n\n\n"+err.stack)
+}
