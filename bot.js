@@ -2,7 +2,7 @@
 // PS: This bot is not completed, it may error or not have correct permissions.
 // PPS: LELE
 var errorlog = require("./data/errors.json")
-try{
+
 const Discord = require("discord.js")
 const config = require('./config.json')
 const bot = new Discord.Client()
@@ -78,6 +78,7 @@ bot.on('ready', function() {
 })
 
 bot.on("message", function(message) {
+  try{
   if (message.sender.bot) return
   if (message.channel.server === undefined && message.sender != bot.user) {
     bot.sendMessage(message, "Bot only works in Servers, not Private Messages (This is so blacklist system works properely)")
@@ -471,12 +472,7 @@ if (message.content.startsWith(prefix + 'queue')) {
     };
     bot.sendMessage(message, `${rb}xl\n${text}${rb}`);
   }
-})
-
-bot.loginWithToken(config.token)
-// This version of discord.js is V8, you may install it using npm install discord.js#indev-old
-// Don't mess with this file it will ruin your bot, to change stuff edit config.json
-}catch(err){
+    }catch(err){
   console.log("WELL LADS LOOKS LIKE SOMETHING WENT WRONG! Visit MusicBot server for support (https://discord.gg/UbwFDM6) and quote this error:\n\n\n"+err.stack)
   errorlog[String(Object.keys(errorlog).length)] = {
 "code":err.code,
@@ -488,3 +484,9 @@ bot.loginWithToken(config.token)
   })
 
 }
+})
+
+bot.loginWithToken(config.token)
+// This version of discord.js is V8, you may install it using npm install discord.js#indev-old
+// Don't mess with this file it will ruin your bot, to change stuff edit config.json
+
