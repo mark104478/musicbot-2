@@ -1,3 +1,4 @@
+"use strict";
 // Don't mess with this file it will ruin your bot, to change stuff edit config.json
 // PS: This bot is not completed, it may error or not have correct permissions.
 // PPS: LELE
