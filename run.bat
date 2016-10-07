@@ -1,1 +1,3 @@
+@echo off
+echo Starting script...
 node bot.js
