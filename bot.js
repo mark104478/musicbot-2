@@ -203,6 +203,10 @@ ${prefix}math <maths> - evaluates math equations${rb}`)
     if (!suffix) return bot.sendMessage(message, 'You need to a song link or a song name')
     play(message, getQueue(message.server.id), suffix)
   }
+
+  if(message.content.startsWith(prefix + 'debug')){
+    bot.sendMessage(message, "```xl\nSystem info: " + process.platform + "-" + process.arch + " with " + process.release.name + " version " + process.version.slice(1) + "\nProcess info: PID " + process.pid + " at " + process.cwd() + "\nProcess memory usage: " + Math.ceil(process.memoryUsage().heapTotal / 1000000) + " MB\nSystem memory usage: " + Math.ceil((os.totalmem() - os.freemem()) / 1000000) + " of " + Math.ceil(os.totalmem() / 1000000) + " MB\nBot info: ID " + bot.user.id + " #" + bot.user.discriminator + "\n```");
+        }
   if (message.content.startsWith(prefix + "serverblacklist")) {
     if (message.sender.id === config.owner_id || config.admins.indexOf(msg.author.id)!= -1) {
       let c = message.content.split(" ").splice(1).join(" ")
