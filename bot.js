@@ -184,7 +184,7 @@ ${prefix}mynotes - Shows notes you have taken${rb}`)
         'notes':[]
       }
     }
-    notes[message.author.id].notes[notes[message.author.id].notes.length].length = {
+    notes[message.author.id].notes[notes[message.author.id].notes.length] = {
       'content':message.content.split(" ").splice(1).join(" ")
     }
     fs.writeFile('./data/notes.json',JSON.stringify(notes),function(err){
