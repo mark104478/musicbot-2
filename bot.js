@@ -181,10 +181,10 @@ ${prefix}mynotes - Shows notes you have taken${rb}`)
   if(message.content.startsWith(prefix + 'note')) {
     if(notes[message.author.id] === undefined){
       notes[message.author.id] = {
-        'notes':{}
+        'notes':[]
       }
     }
-    notes[message.author.id].notes[Object.keys(notes[message.author.id].notes).length] = {
+    notes[message.author.id].notes[notes[message.author.id].notes.length].length] = {
       'content':message.content.split(" ").splice(1).join(" ")
     }
     fs.writeFile('./data/notes.json',JSON.stringify(notes),function(err){
@@ -193,7 +193,7 @@ ${prefix}mynotes - Shows notes you have taken${rb}`)
   }
   if(message.content === prefix + 'mynotes'){
     var nutes = ''
-    for(var i = 0;i < Object.keys(notes[Object.keys(notes[message.author.id].notes).length]);i++){
+    for(var i = 0;i < notes[message.author.id].notes.length;i++){
       nutes += `${i}) ${notes[message.author.id].notes[i]}\n`
     }
     bot.sendMessage(message,nutes)
