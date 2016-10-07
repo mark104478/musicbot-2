@@ -490,13 +490,23 @@ if (message.content.startsWith(prefix + 'resume')) {
     bot.sendMessage(message, "GitHub URL: **https://github.com/developerCodex/musicbot**")
   }
 
-  if (message.content.startsWith(prefix + 'about')) {
+  if (message.content.startsWith(prefix + 'about') || message.mentions[0] === bot.user) {
 // Please do not change this... It is in the license
+if(message.content === bot.user + ' help'){
+  var cdb = '```'
+  var msg = `${cdb}fix
+This is an instance of developerCodex's Open source musicbot
+I am written in node.js and use ytdl to source songs and play them!
+To see all my commands type ${prefix}help.${cdb}`
+bot.sendMessage(message, msg)
+return;
+}
     var cdb = '```'
     var msg = `${cdb}fix
 This is an instance of developerCodex's Open source musicbot
 I am written in node.js and use ytdl to source songs and play them!
 To see all my commands type ${prefix}help.${cdb}`
+bot.sendMessage(message,msg)
   }
 
   if (message.content.startsWith(prefix + 'np') || message.content.startsWith(prefix + 'nowplaying')) {
