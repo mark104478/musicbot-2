@@ -490,7 +490,7 @@ if (message.content.startsWith(prefix + 'resume')) {
     bot.sendMessage(message, "GitHub URL: **https://github.com/developerCodex/musicbot**")
   }
 
-  if (message.content.startsWith(prefix + 'about') || message.mentions[0].equals(bot.user)) {
+  if (message.content.startsWith(prefix + 'about') || message.mentions[0] === bot.user) {
 // Please do not change this... It is in the license
 if(message.content === bot.user + ' help'){
   var cdb = '```'
