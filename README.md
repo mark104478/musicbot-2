@@ -3,9 +3,9 @@
 <br />
 A Discord music bot you may run yourself with minimal effort and time!
 
-This bot will require: **Node.js, Git, discord.js#indev-old, FFMPEG, ytdl-core, Python 2.7 (optional)**, for more information on how to install the programs, please check the wiki.
+This bot will require: **Node.js, Git, discord.js#indev-old, FFMPEG, ytdl-core, Python 2.7 (optional)**, for more information on how to install the programs, please check the [wiki](https://github.com/developerCodex/musicbot/wiki/Installation).
 
-If you encounter any **bugs or issues** throughout the process of trying to get your bot running, then please **create an issue on the github**, and we'll check into it, as soon as we can. 
+If you encounter any **bugs or issues** throughout the process of trying to get your bot running, then please **create an issue on the github**, and we'll check into it, as soon as we can.
 
 [Music Bot Support Server](https://discord.gg/CVyVgap)
 
@@ -13,4 +13,10 @@ If you encounter any **bugs or issues** throughout the process of trying to get 
 
 [Discord.js Documentation](http://discordjs.readthedocs.io/en/8.1.0/index.html)
 
-[Credit](https://github.com/developerCodex/musicbot/wiki/Credit)
+Credit goes to:
+
+  developerCodex
+  ASIANBOI
+  Joseph
+  Hackzilla
+  ZelAk312

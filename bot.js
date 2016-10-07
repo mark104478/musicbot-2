@@ -75,7 +75,16 @@ function play(msg, queue, song) {
 
 bot.on('ready', function() {
   bot.setStatus('online', config.status)
-  console.log(`Logged in as: ${bot.user.name} (${bot.user.id}), prefix is ${config.prefix}`)
+  console.console.log();(`
+-----------------------------
+Use 'git pull' to keep your bot updated
+Logging in...
+-----------------------------
+Logged in as ${bot.user.name}
+On ${bot.servers.size} servers with ${bot.channels.size}
+I have seen ${bot.users.size}
+Let's go!
+-----------------------------`)
 })
 
 bot.on("message", function(message) {
@@ -182,7 +191,7 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
     }
 
   }
-  
+
   if(message.content.startsWith(prefix + "clearqueue")){
     if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1){
      let queue = getQueue(msg.server.id);
@@ -195,7 +204,7 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
       bot.sendMessage(message, 'Just the admins can do this command');
     }
 }
-  
+
   if(message.content.startsWith(prefix + "lookupwarn")){
     if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1){
       let user = message.mentions[0];
@@ -217,7 +226,7 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
       bot.sendMessage(message, 'Just the admins can do this command');
     }
 }
-  
+
   if (message.content.startsWith(prefix + 'skip')) {
     if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1){
       let player = bot.voiceConnections.get('server', message.server);
@@ -228,7 +237,7 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
       bot.sendMessage(message, 'Just the admins can do this command');
     }
   }
-  
+
   if(message.content.startsWith(prefix + "deletewarn")){
     if (message.channel.permissionsOf(message.sender).hasPermission("kickMembers") || message.channel.permissionsOf(message.sender).hasPermission("banMembers") || message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1) {
         let user = message.mentions[0];
@@ -342,7 +351,7 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
       }, 2000)
     }
   }
-  
+
 if (message.content.startsWith(prefix + 'warn')) {
     if (message.channel.permissionsOf(message.sender).hasPermission("kickMembers") || message.channel.permissionsOf(message.sender).hasPermission("banMembers")) {
       let c = message.content
@@ -414,9 +423,9 @@ if (message.content.startsWith(prefix + 'warn')) {
 
     }
   }
-  
+
   if (message.content.startsWith(prefix + 'volume')) {
-    
+
     let suffix = message.content.split(" ")[1];
     let player = bot.voiceConnections.get('server', message.server);
     if(!player || !player.playing) return bot.sendMessage(message, 'No, music is playing at this time.');
@@ -457,13 +466,30 @@ if (message.content.startsWith(prefix + 'resume')) {
   if (message.content.startsWith(prefix + 'git')) {
     bot.sendMessage(message, "GitHub URL: **https://github.com/developerCodex/musicbot**")
   }
-  
+
+  if (message.content.startsWith(prefix + 'about') || message.mentions[0].equals(bot.user)) {
+// Please do not change this... It is in the license
+if(message.content === bot.user + ' help'){
+  var cdb = '```'
+  var msg = `${cdb}fix
+This is an instance of developerCodex's Open source musicbot
+I am written in node.js and use ytdl to source songs and play them!
+To see all my commands type ${prefix}help.${cdb}`
+return;
+}
+    var cdb = '```'
+    var msg = `${cdb}fix
+This is an instance of developerCodex's Open source musicbot
+I am written in node.js and use ytdl to source songs and play them!
+To see all my commands type ${prefix}help.${cdb}`
+  }
+
   if (message.content.startsWith(prefix + 'np') || message.content.startsWith(prefix + 'nowplaying')) {
     let queue = getQueue(message.server.id);
     if(queue.length == 0) return bot.sendMessage(message, "No music in queue");
     bot.sendMessage(message, `${rb}xl\nCurrently playing: ${queue[0].title} | by ${queue[0].requested}${rb}`);
 }
-  
+
 if (message.content.startsWith(prefix + 'queue')) {
     let queue = getQueue(message.server.id);
     if(queue.length == 0) return bot.sendMessage(message, "No music in queue");
@@ -490,4 +516,3 @@ if (message.content.startsWith(prefix + 'queue')) {
 bot.loginWithToken(config.token)
 // This version of discord.js is V8, you may install it using npm install discord.js#indev-old
 // Don't mess with this file it will ruin your bot, to change stuff edit config.json
-
