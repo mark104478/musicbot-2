@@ -7,6 +7,7 @@ var errorlog = require("./data/errors.json")
 const Discord = require("discord.js")
 const config = require('./config.json')
 const bot = new Discord.Client()
+const notes = require('./data/notes.json')
 const prefix = config.prefix
 const rb = "```"
 const sbl = require("./data/blservers.json")
@@ -138,7 +139,9 @@ ${prefix}play - Plays a link that you have wanted it to.
 ${prefix}userblacklist <add/remove> <user id> - Blacklists a user
 ${prefix}warn <user> <reason> - Warns a user for the thing they did wrong.
 ${prefix}reminder <time>|<reminder> - Reminds you of something in a certain time
-${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from blacklist${rb}`)
+${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from blacklist
+${prefix}note - Takes a note
+${prefix}mynotes - Shows notes you have taken${rb}`)
   }
   if (message.content.startsWith(prefix + 'servers')) {
     bot.sendMessage(message, "I'm currently on **" + bot.servers.length + "** server(s)")
@@ -171,6 +174,19 @@ ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from
       bot.sendMessage(message, "Sorry, this command is for the owner only.")
     }
 
+  }
+  if(message.content.startsWith(prefix + 'note')) {
+    if(!notes[message.author.id].notes){
+      notes[message.author.id] = {
+        'notes':{}
+      }
+    }
+    notes[message.author.id].notes[Object.keys(notes[message.author.id].notes).length] = {
+      'content':message.content.split(" ").splice(1).join(" ")
+    }
+    fs.writeFile('./data/notes.json',JSON.stringify(notes),function(err){
+      if(err) return;
+    })
   }
   if (message.content.startsWith(prefix + "userblacklist")) {
     if (message.sender.id === config.owner_id || config.admins.indexOf(msg.author.id)!= -1) {
