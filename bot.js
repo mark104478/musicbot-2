@@ -76,7 +76,7 @@ function play(msg, queue, song) {
 
 bot.on('ready', function() {
   bot.setStatus('online', config.status)
-  console.console.log();(`
+  console.log();(`
 -----------------------------
 Use 'git pull' to keep your bot updated
 Logging in...
