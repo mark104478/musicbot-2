@@ -9,6 +9,7 @@ const Discord = require("discord.js")
 const config = require('./config.json')
 const bot = new Discord.Client()
 const notes = require('./data/notes.json')
+const os = require('os')
 const prefix = config.prefix
 const rb = "```"
 const sbl = require("./data/blservers.json")
