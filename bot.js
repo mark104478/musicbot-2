@@ -115,7 +115,11 @@ bot.on("message", function(message) {
     })
   }
   if(message.content.startsWith(prefix + 'math')) {
+    try{
     var res = maths.eval(message.content.split(" ").splice(1).join(" "))
+  }catch(err){
+    var res = 'Could not calculate'
+  }
     bot.sendMessage(message,res)
   }
 
