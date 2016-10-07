@@ -185,7 +185,9 @@ ${prefix}reminder <time>|<reminder> - Reminds you of something in a certain time
 ${prefix}serverblacklist <add/remove> <server id> - Adds or removes servers from blacklist
 ${prefix}note - Takes a note
 ${prefix}mynotes - Shows notes you have taken
-${prefix}math <maths> - evaluates math equations${rb}`)
+${prefix}math <maths> - evaluates math equations
+${prefix}uptime - Shows bot uptime
+${prefix}debug - Gets system information${rb}`)
   }
   if (message.content.startsWith(prefix + 'servers')) {
     bot.sendMessage(message, "I'm currently on **" + bot.servers.length + "** server(s)")
