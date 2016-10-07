@@ -193,10 +193,12 @@ ${prefix}mynotes - Shows notes you have taken${rb}`)
     })
   }
   if(message.content === prefix + 'mynotes'){
-    var nutes = 'Here are your notes:\n\n'
+    var nutes = 'Here are your notes:\n\n```'
     for(var i = 0;i < notes[message.author.id].notes.length;i++){
       nutes += `${i + 1}) ${notes[message.author.id].notes[i].content}\n`
     }
+
+    nutes += "```"
     bot.sendMessage(message,nutes)
   }
   if (message.content.startsWith(prefix + "userblacklist")) {
