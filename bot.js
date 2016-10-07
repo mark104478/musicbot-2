@@ -98,7 +98,7 @@ bot.on("message", function(message) {
   if (message.channel.server === undefined && message.sender != bot.user) {
     bot.sendMessage(message, "Bot only works in Servers, not Private Messages (This is so blacklist system works properely)")
 
-    return
+    return;
   }
   if (sbl.indexOf(message.channel.server.id) != -1 && message.content.startsWith(prefix)) {
     bot.sendMessage(message, "This server is blacklisted")
@@ -121,7 +121,7 @@ bot.on("message", function(message) {
   }catch(err){
     var res = 'Could not calculate'
   }
-    bot.sendMessage(message,res)
+    bot.sendMessage("```"+message,res+"```")
   }
 
   if (message.content.startsWith(prefix + 'help')) {
@@ -233,7 +233,7 @@ ${prefix}math <maths> - evaluates math equations${rb}`)
   }
 
   if(message.content.startsWith(prefix + "clearqueue")){
-    if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1){
+    if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1 || message.server.permissionsOf(message.author).hasPermission('MANAGE_SERVER')){
      let queue = getQueue(message.server.id);
      if(queue.length == 0) return bot.sendMessage(message, `No music in queue`);
      for(var i = queue.length - 1;  i >= 0; i--){
@@ -246,7 +246,7 @@ ${prefix}math <maths> - evaluates math equations${rb}`)
 }
 
   if(message.content.startsWith(prefix + "lookupwarn")){
-    if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1){
+    if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1 || message.server.permissionsOf(message.author).hasPermission('MANAGE_SERVER')){
       let user = message.mentions[0];
       if(!user) return bot.sendMessage(message, "You need to mention the user");
       let list = Object.keys(warns);
@@ -268,7 +268,7 @@ ${prefix}math <maths> - evaluates math equations${rb}`)
 }
 
   if (message.content.startsWith(prefix + 'skip')) {
-    if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1){
+    if(message.server.owner.id == message.author.id || message.author.id == config.owner_id || config.admins.indexOf(message.author.id) != -1 || message.server.permissionsOf(message.author).hasPermission('MANAGE_SERVER')){
       let player = bot.voiceConnections.get('server', message.server);
       if(!player || !player.playing) return bot.sendMessage(message, 'The bot is not playing');
       player.stopPlaying()
