@@ -189,10 +189,11 @@ ${prefix}mynotes - Shows notes you have taken${rb}`)
     }
     fs.writeFile('./data/notes.json',JSON.stringify(notes),function(err){
       if(err) return;
+      bot.sendMessage(message,'Added to notes! Type `'+prefix+'mynotes` to see all your notes')
     })
   }
   if(message.content === prefix + 'mynotes'){
-    var nutes = ''
+    var nutes = 'Here are your notes:\n\n'
     for(var i = 0;i < notes[message.author.id].notes.length;i++){
       nutes += `${i + 1}) ${notes[message.author.id].notes[i].content}\n`
     }
