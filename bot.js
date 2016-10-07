@@ -88,6 +88,7 @@ Let's go!
 -----------------------------`
 
 console.log(msg)
+console.log("Logged in and ready to respond...")
 })
 
 bot.on("message", function(message) {
