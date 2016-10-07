@@ -27,6 +27,7 @@
   "dependencies": {
     "discord.js": "hydrabolt/discord.js#indev-old",
     "youtube-search": "^1.0.6",
+    "mathjs": "^3.5.3",
     "ytdl-core": "^0.7.17"
   }
 }

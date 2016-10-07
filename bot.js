@@ -3,7 +3,7 @@
 // PS: This bot is not completed, it may error or not have correct permissions.
 
 var errorlog = require("./data/errors.json")
-
+var maths = require('mathjs')
 const Discord = require("discord.js")
 const config = require('./config.json')
 const bot = new Discord.Client()
@@ -113,6 +113,10 @@ bot.on("message", function(message) {
         bot.updateMessage(msg, "Pong, **" + (msg.timestamp - message.timestamp) + "**ms")
       }
     })
+  }
+  if(message.content.startsWith(prefix + 'math')) {
+    var res = math.eval(message.content.split(" ").splice(1).join(" "))
+    bot.sendMessage(message,res)
   }
 
   if (message.content.startsWith(prefix + 'help')) {
