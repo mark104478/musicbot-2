@@ -194,7 +194,7 @@ ${prefix}mynotes - Shows notes you have taken${rb}`)
   if(message.content === prefix + 'mynotes'){
     var nutes = ''
     for(var i = 0;i < notes[message.author.id].notes.length;i++){
-      nutes += `${i}) ${notes[message.author.id].notes[i].content}\n`
+      nutes += `${i + 1}) ${notes[message.author.id].notes[i].content}\n`
     }
     bot.sendMessage(message,nutes)
   }
