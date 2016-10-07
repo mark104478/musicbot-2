@@ -82,8 +82,8 @@ Use 'git pull' to keep your bot updated
 Logging in...
 -----------------------------
 Logged in as ${bot.user.name}
-On ${bot.servers.size} servers with ${bot.channels.size}
-I have seen ${bot.users.size}
+On ${bot.servers.length} servers with ${bot.channels.length} channels
+I have seen ${bot.users.length} users
 Let's go!
 -----------------------------`
 
