@@ -76,7 +76,7 @@ function play(msg, queue, song) {
 
 bot.on('ready', function() {
   bot.setStatus('online', config.status)
-  console.log();(`
+  var msg = `
 -----------------------------
 Use 'git pull' to keep your bot updated
 Logging in...
@@ -85,7 +85,9 @@ Logged in as ${bot.user.name}
 On ${bot.servers.size} servers with ${bot.channels.size}
 I have seen ${bot.users.size}
 Let's go!
------------------------------`)
+-----------------------------`
+
+console.log(msg)
 })
 
 bot.on("message", function(message) {
