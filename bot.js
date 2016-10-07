@@ -188,6 +188,13 @@ ${prefix}mynotes - Shows notes you have taken${rb}`)
       if(err) return;
     })
   }
+  if(message.content === prefix + 'mynotes'){
+    var nutes = ''
+    for(var i = 0;i < Object.keys(notes[Object.keys(notes[message.author.id].notes).length]);i++){
+      nutes += `${i}) ${notes[message.author.id].notes[i]}\n`
+    }
+    bot.sendMessage(message,nutes)
+  }
   if (message.content.startsWith(prefix + "userblacklist")) {
     if (message.sender.id === config.owner_id || config.admins.indexOf(msg.author.id)!= -1) {
       let c = message.content.split(" ").splice(1).join(" ")
