@@ -179,7 +179,7 @@ ${prefix}mynotes - Shows notes you have taken${rb}`)
 
   }
   if(message.content.startsWith(prefix + 'note')) {
-    if(!notes[message.author.id].notes){
+    if(notes[message.author.id] === undefined){
       notes[message.author.id] = {
         'notes':{}
       }
