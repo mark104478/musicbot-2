@@ -13,10 +13,3 @@ If you encounter any **bugs or issues** throughout the process of trying to get 
 
 [Discord.js Documentation](http://discordjs.readthedocs.io/en/8.1.0/index.html)
 
-Credit goes to:
-
-  developerCodex
-  ASIANBOI
-  Joseph
-  Hackzilla
-  ZelAk312
