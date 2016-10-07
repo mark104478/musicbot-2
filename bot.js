@@ -3,7 +3,8 @@
 // PS: This bot is not completed, it may error or not have correct permissions.
 
 var errorlog = require("./data/errors.json")
-const maths = require('mathjs')
+const thing = require('mathjs')
+const maths = thing.parser()
 const Discord = require("discord.js")
 const config = require('./config.json')
 const bot = new Discord.Client()
