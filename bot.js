@@ -188,7 +188,7 @@ ${prefix}note - Takes a note
 ${prefix}mynotes - Shows notes you have taken
 ${prefix}math <maths> - evaluates math equations
 ${prefix}uptime - Shows bot uptime
-${prefix}debug - Gets system information${rb}`)
+${prefix}sys - Gets system information${rb}`)
   }
   if (message.content.startsWith(prefix + 'servers')) {
     bot.sendMessage(message, "I'm currently on **" + bot.servers.length + "** server(s)")
@@ -207,7 +207,7 @@ ${prefix}debug - Gets system information${rb}`)
     play(message, getQueue(message.server.id), suffix)
   }
 
-  if(message.content.startsWith(prefix + 'debug')){
+  if(message.content.startsWith(prefix + 'sys')){
     bot.sendMessage(message, "```xl\nSystem info: " + process.platform + "-" + process.arch + " with " + process.release.name + " version " + process.version.slice(1) + "\nProcess info: PID " + process.pid + " at " + process.cwd() + "\nProcess memory usage: " + Math.ceil(process.memoryUsage().heapTotal / 1000000) + " MB\nSystem memory usage: " + Math.ceil((os.totalmem() - os.freemem()) / 1000000) + " of " + Math.ceil(os.totalmem() / 1000000) + " MB\nBot info: ID " + bot.user.id + " #" + bot.user.discriminator + "\n```");
         }
   if (message.content.startsWith(prefix + "serverblacklist")) {
