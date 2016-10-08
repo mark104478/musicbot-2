@@ -282,7 +282,7 @@ ${prefix}debug - Gets system information${rb}`)
      }
      bot.sendMessage(message, `Cleared the queue`)
     }else{
-      bot.sendMessage(message, 'Just the admins can do this command');
+      bot.sendMessage(message, 'Only the admins can do this command');
     }
 }
 
@@ -304,7 +304,7 @@ ${prefix}debug - Gets system information${rb}`)
       if(foundCounter == 0) return bot.sendMessage(message, 'Nothing found for this user');
       bot.sendMessage(message, `Found ${foundCounter} warns\n ${found}`);
     }else{
-      bot.sendMessage(message, 'Just the admins can do this command');
+      bot.sendMessage(message, 'Only the admins can do this command');
     }
 }
 
@@ -315,7 +315,7 @@ ${prefix}debug - Gets system information${rb}`)
       player.stopPlaying()
       bot.sendMessage(message, 'Skipping song...');
     }else{
-      bot.sendMessage(message, 'Just the admins can do this command');
+      bot.sendMessage(message, 'Only the admins can do this command');
     }
   }
 
@@ -348,7 +348,7 @@ ${prefix}debug - Gets system information${rb}`)
       player.pause();
       bot.sendMessage(message, "Pausing music...");
     }else{
-      bot.sendMessage(message, 'Just the admins can use this command');
+      bot.sendMessage(message, 'Only the admins can use this command');
     }
   }
 
@@ -519,7 +519,7 @@ if (message.content.startsWith(prefix + 'warn')) {
         player.setVolume((volume / 50));
         bot.sendMessage(message, `Volume changed from ${(volumeBefore * 50)} to ${volume}`);
     }else{
-      bot.sendMessage(message, 'Just the admins can change the volume');
+      bot.sendMessage(message, 'Only the admins can change the volume');
     }
 }
 
@@ -531,7 +531,7 @@ if (message.content.startsWith(prefix + 'resume')) {
       player.resume();
       bot.sendMessage(message, "Resuming music...");
     }else{
-      bot.sendMessage(message, 'Just the adminds can do this command');
+      bot.sendMessage(message, 'Only the adminds can do this command');
     }
 }
 
