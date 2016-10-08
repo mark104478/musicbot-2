@@ -7,8 +7,13 @@ This bot will require: **Node.js, Git, discord.js#indev-old, FFMPEG, ytdl-core, 
 
 If you encounter any **bugs or issues** throughout the process of trying to get your bot running, then please **create an issue on the github**, and we'll check into it, as soon as we can.
 
+---
+# Links
+
 [Music Bot Support Server](https://discord.gg/CVyVgap)
 
 [Go here for instructions](https://github.com/developerCodex/musicbot/wiki/Installation)
 
 [Discord.js Documentation](http://discordjs.readthedocs.io/en/8.1.0/index.html)
+
+[Credit](https://github.com/developerCodex/musicbot/wiki/Credit)
