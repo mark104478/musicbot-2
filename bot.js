@@ -6,7 +6,7 @@ const errorlog = require("./data/errors.json")
 const thing = require('mathjs')
 const maths = thing.parser()
 const Discord = require("discord.js")
-const started = new Date(Date.now())
+const started = Date()
 const config = require('./config.json')
 const bot = new Discord.Client()
 const notes = require('./data/notes.json')
@@ -195,7 +195,7 @@ ${prefix}sys - Gets system information${rb}`)
     bot.sendMessage(message, "I'm currently on **" + bot.servers.length + "** server(s)")
   }
   if(message.content === prefix + 'uptime'){
-    bot.sendMessage(message,"I have been up for `"+secondsToString(process.uptime())+"` - My process was started `"+secondsToString(started)+"` ago")
+    bot.sendMessage(message,"I have been up for `"+secondsToString(process.uptime())+"` - My process was started at this time --> `"+started+"`")
   }
 
   if (message.content.startsWith(prefix + 'play')) {
