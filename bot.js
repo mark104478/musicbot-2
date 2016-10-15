@@ -34,6 +34,21 @@ function getQueue(guild) {
   return queues[guild]
 }
 
+var express = require("express")
+var app = express();
+
+app.get("/queue/:guildid",function(req,res){
+  let queue = getQueue(req.params.guild);
+    if(queue.length == 0) return bot.sendMessage(message, "No music in queue");
+    let text = '';
+    for(let i = 0; i < queue.length; i++){
+      text += `${(i + 1)}. ${queue[i].title} | by ${queue[i].requested}\n`
+    };
+  res.send(text)
+}
+        app.listen(config.server_port)
+  
+
 function play(msg, queue, song) {
   if (!msg || !queue) return
   if (song) {
