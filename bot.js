@@ -45,7 +45,7 @@ app.get("/queue/:guildid",function(req,res){
       text += `${(i + 1)}. ${queue[i].title} | by ${queue[i].requested}\n`
     };
   res.send(text)
-}
+})
         app.listen(config.server_port)
   
 
