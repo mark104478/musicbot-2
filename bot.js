@@ -38,8 +38,8 @@ var express = require("express")
 var app = express();
 
 app.get("/queue/:guildid",function(req,res){
-  let queue = getQueue(req.params.guild);
-    if(queue.length == 0) return bot.sendMessage(message, "No music in queue");
+  let queue = getQueue(req.params.guildid);
+    if(queue.length == 0) return res.send("Uh oh... No music!");
     let text = '';
     for(let i = 0; i < queue.length; i++){
       text += `${(i + 1)}. ${queue[i].title} | by ${queue[i].requested}\n`
