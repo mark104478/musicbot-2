@@ -5,5 +5,6 @@
   "owner_id": "[OWNER ID]",
   "status": "[STATUS]",
   "youtube_api_key": "[YOUTUBE API KEY]",
-  "admins": ["Idhere", "Idhere"]
+  "admins": ["Idhere", "Idhere"],
+  "server_port":"[PORT OF SERVER HERE]"
 }
