@@ -47,7 +47,7 @@ app.get("/queue/:guildid",function(req,res){
   res.send(text)
 })
         app.listen(config.server_port)
-  
+
 
 function play(msg, queue, song) {
   if (!msg || !queue) return
@@ -191,7 +191,6 @@ ${prefix}eval - Owner only.
 ${prefix}clearqueue - Clears the list of queues.
 ${prefix}say - Admin only.
 ${prefix}resume - Resumes paused song.
-${prefix}restart - Restarts the bot (Owner only).
 ${prefix}shutdown - Power off the bot (Owner only).
 ${prefix}invite - Creates OAuth URL for bot.
 ${prefix}git - Sends link to github repo.
@@ -551,11 +550,7 @@ if (message.content.startsWith(prefix + 'resume')) {
     }
 }
 
-  if (message.content.startsWith(prefix + 'restart')) {
-    if (message.sender.id === config.owner_id || config.admins.indexOf(message.author.id)!= -1) {
-      bot.sendMessage(message, 'Restart issued by **' + message.author.name + '**\nRestarting...')
-    }
-  }
+
 
   if (message.content.startsWith(prefix + 'invite')) {
     bot.sendMessage(message, "My OAuth URL: " + `http://discordapp.com/oauth2/authorize?client_id=${config.client_id}&scope=bot`)
