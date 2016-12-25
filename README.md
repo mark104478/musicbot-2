@@ -1,3 +1,5 @@
+THIS PROJECT IS DEAD. GO TO https://github.com/JoeBanks13/Music-Butt
+
 [![Open Source Music Bot Logo](https://cdn.discordapp.com/attachments/211274061794377729/224402276687675393/OS-MB-Github-Transparent.svg)](https://github.com/developerCodex/musicbot)
 <br />
 <br />
