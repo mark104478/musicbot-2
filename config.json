@@ -1,10 +1,10 @@
 {
-  "token": "[TOKEN]",
-  "client_id": "[CLIENT ID]",
-  "prefix": "[PREFIX]",
-  "owner_id": "[OWNER ID]",
-  "status": "[STATUS]",
+  "token": process.env.Token,
+  "client_id": process.env.cid,
+  "prefix": "[/]",
+  "owner_id": "[467306557114155018]",
+  "status": "[music]",
   "youtube_api_key": "[YOUTUBE API KEY]",
-  "admins": ["Idhere", "Idhere"],
+  "admins": ["467306557114155018"],
   "server_port":"[PORT OF SERVER HERE]"
 }
